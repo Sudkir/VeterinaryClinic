@@ -1,0 +1,34 @@
+﻿<Window x:Class="Sudarikov3ISP1113.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sudarikov3ISP1113"
+        mc:Ignorable="d"
+        Title="Login" Height="800" Width="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="38*"/>
+            <ColumnDefinition Width="81*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" Height="128" Width="128"  Source="/Icon/veterinarian.png" Grid.Column="1" VerticalAlignment="Center" Margin="50 0 0 0" HorizontalAlignment="Left" />
+        <StackPanel Grid.Column="1" Grid.ColumnSpan="2" Margin="0,260,50,0" Grid.RowSpan="2">
+
+            <TextBlock TextWrapping="Wrap" Text="Логин" FontSize="36"/>
+            <TextBox Height="49" TextWrapping="Wrap" Text="" FontSize="36" Margin="0,0,0,0"/>
+            <TextBlock  TextWrapping="Wrap" Text="Пароль" FontSize="36"/>
+            <PasswordBox Height="40" FontSize="36" />
+
+        </StackPanel>
+
+        <StackPanel  Grid.Column="1" Orientation="Horizontal"    Grid.ColumnSpan="2"  Grid.Row="2">
+            <Label MouseLeftButtonUp="Label_MouseLeftButtonUp"  Content="Войти"   Grid.Row="2" VerticalAlignment="Center" FontSize="48"/>
+            <Image HorizontalAlignment="Center" Source="/Icon/etner.png" Height="64" Width="64"></Image>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,45 @@
+﻿<Window x:Class="Sudarikov3ISP1113.View.DefoltWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sudarikov3ISP1113.View"
+        mc:Ignorable="d"
+        Title="DefoltWindow" WindowStartupLocation="CenterScreen" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,10,0,0" Grid.Row="1" Grid.Column="0"  >
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0" >
+                <TextBlock Style="{StaticResource MainText}" FontSize="20" TextWrapping="Wrap" Text="Изменить"  />
+                <Image Style="{StaticResource MainImg}" Source="/Icon/edit.png" />
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0" >
+                <TextBlock Style="{StaticResource MainText}" FontSize="20" TextWrapping="Wrap" Text="Обновить" />
+                <Image Style="{StaticResource MainImg}" Source="/Icon/reload.png" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0" >
+                <TextBlock Style="{StaticResource MainText}" FontSize="20" TextWrapping="Wrap" Text="Сохранить" />
+                <Image Style="{StaticResource MainImg}" Source="/Icon/save.png" />
+            </StackPanel>
+        </StackPanel>
+        
+        <Frame x:Name="DefFraim" Grid.Column="1"  Grid.Row="1"  />
+        <StackPanel Orientation="Horizontal" Margin="10,10,0,0" >
+            <TextBlock Style="{StaticResource MainText}" FontSize="20" TextWrapping="Wrap" Text="На главную" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown"  />
+            <Image Style="{StaticResource MainImg}" Source="/Sudarikov3ISP1113;component/Icon/house.png" />
+        </StackPanel>
+        <StackPanel  Orientation="Horizontal" Margin="10,9.556,0.111,301.667" Grid.Row="1" >
+            <TextBlock Style="{StaticResource MainText}" FontSize="20" TextWrapping="Wrap" Text="Добавить" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_NewObject" Margin="0,12,0,12.111" Width="108"  />
+            <Image x:Name="NewObjectImage" Style="{StaticResource MainImg}" Source="/Sudarikov3ISP1113;component/Icon/piggy.png" />
+        </StackPanel>
+
+    </Grid>
+</Window>
