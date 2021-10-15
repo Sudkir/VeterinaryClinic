@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Sudarikov3ISP1113.DataBase;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Sudarikov3ISP1113.View
 {
@@ -19,8 +13,8 @@ namespace Sudarikov3ISP1113.View
     /// </summary>
     public partial class DefoltWindow : Window
     {
-        
 
+        
         public DefoltWindow()
         {
             InitializeComponent();
@@ -30,45 +24,49 @@ namespace Sudarikov3ISP1113.View
         {
             InitializeComponent();
             DefFraim.Navigate(x);
+            NewMethod(status);
+            
+        }
+
+        private void NewObjectImageLoad(string UriS)
+        {
+            BitmapImage bi1 = new BitmapImage();
+            bi1.BeginInit();
+            bi1.UriSource = new Uri(UriS, UriKind.Relative);
+            bi1.EndInit();
+            NewObjectImage.Stretch = Stretch.Fill;
+            NewObjectImage.Source = bi1;
+        }
+        private void NewMethod(string status)
+        {
             switch (status)
             {
                 case "PetStatus":
-                    BitmapImage bi1 = new BitmapImage();
-                    bi1.BeginInit();
-                    bi1.UriSource = new Uri("/Sudarikov3ISP1113;component/Icon/piggy.png", UriKind.Relative);
-                    bi1.EndInit();
-                    NewObjectImage.Stretch = Stretch.Fill;
-                    NewObjectImage.Source = bi1;
-                    
+
+                    NewObjectImageLoad("/Sudarikov3ISP1113;component/Icon/piggy.png");
+
                     break;
 
                 case "UserStatus":
-                    
-                    BitmapImage bi3 = new BitmapImage();
-                    bi3.BeginInit();
-                    bi3.UriSource = new Uri("/Sudarikov3ISP1113;component/Icon/avatar.png", UriKind.Relative);
-                    bi3.EndInit();
-                    NewObjectImage.Stretch = Stretch.Fill;
-                    NewObjectImage.Source = bi3;
+                    NewObjectImageLoad("/Sudarikov3ISP1113;component/Icon/avatar.png");
+
+
+
                     break;
 
                 case "VisitStatus":
+                    NewObjectImageLoad("/Sudarikov3ISP1113;component/Icon/book.png");
 
-                    BitmapImage bi2 = new BitmapImage();
-                    bi2.BeginInit();
-                    bi2.UriSource = new Uri("/Sudarikov3ISP1113;component/Icon/book.png", UriKind.Relative);
-                    bi2.EndInit();
-                    NewObjectImage.Stretch = Stretch.Fill;
-                    NewObjectImage.Source = bi2;
+
                     break;
                 default:
 
                     break;
             }
-
         }
 
-        private void goMain() {
+        private void goMain()
+        {
 
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
@@ -83,7 +81,14 @@ namespace Sudarikov3ISP1113.View
 
         private void TextBlock_MouseLeftButtonDown_NewObject(object sender, MouseButtonEventArgs e)
         {
-
+            ClassModelPet ModelPet = new ClassModelPet();
+            ModelPet.AgeCard = 12;
+            ModelPet.IdUserCard = 0;
+            ModelPet.NamePet = "2";
+            ModelPet.AgeCard = 0;
+            ModelPet.IdTypeCard = 0;
+            ModelPet.IdSex = 0;
+            ModelPet.NewPetAdd();
         }
     }
 }

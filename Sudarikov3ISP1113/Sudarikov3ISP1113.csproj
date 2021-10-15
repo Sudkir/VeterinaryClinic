@@ -65,6 +65,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DataBase\ClassModelPet.cs" />
     <Compile Include="View\DefoltWindow.xaml.cs">
       <DependentUpon>DefoltWindow.xaml</DependentUpon>
     </Compile>

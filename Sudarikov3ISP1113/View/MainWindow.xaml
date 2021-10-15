@@ -43,6 +43,7 @@
             <Image Style="{StaticResource MainImg}" Source="/Icon/glass.png" />
 
         </StackPanel>
+        
         <Rectangle Fill="Black" Height="5"  Margin="0,50,0,0" Stroke="Black" VerticalAlignment="Top" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
 
     </Grid>
