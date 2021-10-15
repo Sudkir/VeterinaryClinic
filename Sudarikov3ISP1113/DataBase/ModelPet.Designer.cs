@@ -1,4 +1,4 @@
-﻿// Создание кода T4 для модели "C:\Users\IMac5\source\repos\Sudarikov3ISP1113\Sudarikov3ISP1113\DataBase\ModelPet.edmx" включено. 
+﻿// Создание кода T4 для модели "C:\Users\Admin\Source\Repos\Sudkir\VeterinaryClinic\Sudarikov3ISP1113\DataBase\ModelPet.edmx" включено. 
 // Чтобы включить формирование кода прежних версий, измените значение свойства "Стратегия создания кода" конструктора
 // на "Legacy ObjectContext". Это свойство доступно в окне "Свойства", если модель
 // открыта в конструкторе.

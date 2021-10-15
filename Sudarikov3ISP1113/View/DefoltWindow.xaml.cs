@@ -13,7 +13,6 @@ namespace Sudarikov3ISP1113.View
     /// </summary>
     public partial class DefoltWindow : Window
     {
-
         
         public DefoltWindow()
         {
@@ -25,7 +24,6 @@ namespace Sudarikov3ISP1113.View
             InitializeComponent();
             DefFraim.Navigate(x);
             NewMethod(status);
-            
         }
 
         private void NewObjectImageLoad(string UriS)
@@ -37,6 +35,7 @@ namespace Sudarikov3ISP1113.View
             NewObjectImage.Stretch = Stretch.Fill;
             NewObjectImage.Source = bi1;
         }
+
         private void NewMethod(string status)
         {
             switch (status)
@@ -50,15 +49,13 @@ namespace Sudarikov3ISP1113.View
                 case "UserStatus":
                     NewObjectImageLoad("/Sudarikov3ISP1113;component/Icon/avatar.png");
 
-
-
                     break;
 
                 case "VisitStatus":
                     NewObjectImageLoad("/Sudarikov3ISP1113;component/Icon/book.png");
 
-
                     break;
+
                 default:
 
                     break;
@@ -67,11 +64,9 @@ namespace Sudarikov3ISP1113.View
 
         private void goMain()
         {
-
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
-
         }
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
