@@ -13,7 +13,8 @@ namespace Sudarikov3ISP1113.View
     /// </summary>
     public partial class DefoltWindow : Window
     {
-        
+        private string statusDef;
+
         public DefoltWindow()
         {
             InitializeComponent();
@@ -21,9 +22,10 @@ namespace Sudarikov3ISP1113.View
 
         public DefoltWindow(Page x, string status)
         {
+            statusDef = status;
             InitializeComponent();
             DefFraim.Navigate(x);
-            NewMethod(status);
+            NewMethod(statusDef);
         }
 
         private void NewObjectImageLoad(string UriS)
@@ -75,6 +77,33 @@ namespace Sudarikov3ISP1113.View
         }
 
         private void TextBlock_MouseLeftButtonDown_NewObject(object sender, MouseButtonEventArgs e)
+        {
+            switch (statusDef)
+            {
+                case "PetStatus":
+                    PageAddPet pageAddPet = new PageAddPet();
+                    DefFraim.Navigate(pageAddPet);
+                    EditSP.Visibility = Visibility.Hidden;
+
+                    break;
+
+                case "UserStatus":
+                    NewObjectImageLoad("/Sudarikov3ISP1113;component/Icon/avatar.png");
+
+                    break;
+
+                case "VisitStatus":
+                    NewObjectImageLoad("/Sudarikov3ISP1113;component/Icon/book.png");
+
+                    break;
+
+                default:
+
+                    break;
+            }
+        }
+
+        public void re()
         {
             ClassModelPet ModelPet = new ClassModelPet();
             ModelPet.AgeCard = 12;
