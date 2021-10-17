@@ -63,6 +63,13 @@ namespace Sudarikov3ISP1113.DataBase
             e.SaveChanges();
         }
 
+        public List<MedicalCard> ListPetLoad()
+        //загрузка списка животных
+        {
+            List<MedicalCard> listPet = new List<MedicalCard>(e.MedicalCard.ToList());
+            return listPet;
+        }
+
         public List<string> SexList()
         //Вывод списка категорий
         {

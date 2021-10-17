@@ -271,6 +271,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DataBase\ClassModelLogin.cs" />
     <Compile Include="DataBase\ClassModelUser.cs" />
     <Compile Include="DataBase\ClassModelPet.cs" />
     <Compile Include="View\DefoltWindow.xaml.cs">
@@ -295,7 +296,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Login.xaml">
+    <Page Include="View\LoginWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -363,8 +364,8 @@
     <Compile Include="DataBase\User.cs">
       <DependentUpon>ModelPet.tt</DependentUpon>
     </Compile>
-    <Compile Include="View\Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
+    <Compile Include="View\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\MainWindow.xaml">

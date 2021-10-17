@@ -10,5 +10,16 @@
 
     <Grid>
         <Label Content="Pet" HorizontalAlignment="Center"  VerticalAlignment="Center" />
+        <ListView x:Name="listViewPet" Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Кличка" Width="100" DisplayMemberBinding="{Binding LastName}" />
+                    <GridViewColumn Header="Хозяин" Width="100" DisplayMemberBinding="{Binding FirstName}" />
+                    <GridViewColumn Header="Вид\порода" Width="100" DisplayMemberBinding="{Binding Patronymic}" />
+                    <GridViewColumn Header="Пол" Width="100" DisplayMemberBinding="{Binding Phone}" />
+                    <GridViewColumn Header="Возраст" Width="150" DisplayMemberBinding="{Binding Email}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Page>

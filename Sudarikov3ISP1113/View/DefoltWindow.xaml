@@ -38,7 +38,7 @@
             <Image Style="{StaticResource MainImg}" Source="/Sudarikov3ISP1113;component/Icon/house.png" />
         </StackPanel>
         <StackPanel x:Name="AddObjSP"  Orientation="Horizontal" Margin="5,9.556,5.111,0" VerticalAlignment="Top" Height="50" Grid.Row="1" Grid.Column="0">
-            <TextBlock Style="{StaticResource MainText}" FontSize="20" TextWrapping="Wrap" Text="Добавить" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_NewObject" Margin="0,12,0,12.111" Width="108" />
+            <TextBlock Style="{StaticResource MainText}" FontSize="20" TextWrapping="Wrap" Text="Добавить" MouseLeftButtonDown="NewObject_MouseLeftButtonDown_NewObject" Margin="0,12,0,12.111" Width="108" />
             <Image x:Name="NewObjectImage" Style="{StaticResource MainImg}" Source="/Sudarikov3ISP1113;component/Icon/piggy.png" />
         </StackPanel>
         <Rectangle Style="{StaticResource RectangleColor}"  Height="5"   VerticalAlignment="Bottom" Grid.Row="0" Grid.ColumnSpan="2" />

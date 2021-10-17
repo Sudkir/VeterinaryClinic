@@ -19,26 +19,27 @@ namespace Sudarikov3ISP1113.View
             InitializeComponent();
         }
 
-        public DefoltWindow(Page x, string status)
+        public DefoltWindow(Page PageName, string status)
         {
             statusDef = status;
             InitializeComponent();
-            DefFraim.Navigate(x);
-            NewMethod(statusDef);
+            DefFraim.Navigate(PageName);
+            ImageLoad(statusDef);
             SaveSP.Visibility = Visibility.Collapsed;
         }
 
         private void NewObjectImageLoad(string UriS)
+        //загрузка изображений
         {
-            BitmapImage bi1 = new BitmapImage();
-            bi1.BeginInit();
-            bi1.UriSource = new Uri(UriS, UriKind.Relative);
-            bi1.EndInit();
+            BitmapImage BI = new BitmapImage();
+            BI.BeginInit();
+            BI.UriSource = new Uri(UriS, UriKind.Relative);
+            BI.EndInit();
             NewObjectImage.Stretch = Stretch.Fill;
-            NewObjectImage.Source = bi1;
+            NewObjectImage.Source = BI;
         }
 
-        private void NewMethod(string status)
+        private void ImageLoad(string status)
         {
             switch (status)
             {
@@ -65,6 +66,7 @@ namespace Sudarikov3ISP1113.View
         }
 
         private void goMain()
+        //назад
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
@@ -76,7 +78,8 @@ namespace Sudarikov3ISP1113.View
             goMain();
         }
 
-        private void TextBlock_MouseLeftButtonDown_NewObject(object sender, MouseButtonEventArgs e)
+        private void NewObject_MouseLeftButtonDown_NewObject(object sender, MouseButtonEventArgs e)
+        //добавить новое
         {
             VisabilBtn();
 
