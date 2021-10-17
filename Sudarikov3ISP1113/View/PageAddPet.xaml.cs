@@ -1,19 +1,7 @@
 ﻿using Sudarikov3ISP1113.DataBase;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Xceed.Wpf.Toolkit;
 
 namespace Sudarikov3ISP1113.View
 {
@@ -38,9 +26,30 @@ namespace Sudarikov3ISP1113.View
             cmbFiltrationType.SelectedIndex = 0;
         }
 
+        public void SaveAddPet()
+        {
+            MessageBoxResult result = Xceed.Wpf.Toolkit.MessageBox.Show("Сохранить?", "Подтвержнение",
+                MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            if (MessageBoxResult.OK == result)
+            {
+                ClassModelPet ModelPet = new ClassModelPet();
+
+                ModelPet.IdUserCard = Convert.ToInt32(idUserTB.Text);
+                ModelPet.NamePet = NameTB.Text;
+                ModelPet.AgeCard = Convert.ToInt32(LongAge.Text);
+                ModelPet.IdTypeCard = cmbFiltrationType.SelectedIndex;
+                ModelPet.IdSex = cmbFiltrationSex.SelectedIndex;
+                ModelPet.NewPetAdd();
+            }
+            else
+            {
+                //do stuff if No
+                //clear поля
+            }
+        }
+
         private void C_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = Xceed.Wpf.Toolkit.MessageBox.Show("Hello world!", LongAge.Text, MessageBoxButton.OK, MessageBoxImage.Question);
         }
     }
 }

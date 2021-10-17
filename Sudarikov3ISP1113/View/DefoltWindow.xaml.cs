@@ -1,5 +1,4 @@
-﻿using Sudarikov3ISP1113.DataBase;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -26,6 +25,7 @@ namespace Sudarikov3ISP1113.View
             InitializeComponent();
             DefFraim.Navigate(x);
             NewMethod(statusDef);
+            SaveSP.Visibility = Visibility.Collapsed;
         }
 
         private void NewObjectImageLoad(string UriS)
@@ -78,22 +78,21 @@ namespace Sudarikov3ISP1113.View
 
         private void TextBlock_MouseLeftButtonDown_NewObject(object sender, MouseButtonEventArgs e)
         {
+            VisabilBtn();
+
             switch (statusDef)
             {
                 case "PetStatus":
                     PageAddPet pageAddPet = new PageAddPet();
                     DefFraim.Navigate(pageAddPet);
-                    EditSP.Visibility = Visibility.Hidden;
 
                     break;
 
                 case "UserStatus":
-                    NewObjectImageLoad("/Sudarikov3ISP1113;component/Icon/avatar.png");
 
                     break;
 
                 case "VisitStatus":
-                    NewObjectImageLoad("/Sudarikov3ISP1113;component/Icon/book.png");
 
                     break;
 
@@ -103,16 +102,36 @@ namespace Sudarikov3ISP1113.View
             }
         }
 
-        public void re()
+        private void VisabilBtn()
         {
-            ClassModelPet ModelPet = new ClassModelPet();
-            ModelPet.AgeCard = 12;
-            ModelPet.IdUserCard = 0;
-            ModelPet.NamePet = "2";
-            ModelPet.AgeCard = 0;
-            ModelPet.IdTypeCard = 0;
-            ModelPet.IdSex = 0;
-            ModelPet.NewPetAdd();
+            EditSP.Visibility = Visibility.Hidden;
+            ResSP.Visibility = Visibility.Hidden;
+            SaveSP.Visibility = Visibility.Visible;
+            AddObjSP.Visibility = Visibility.Hidden;
+        }
+
+        private void Save_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            switch (statusDef)
+            {
+                case "PetStatus":
+                    PageAddPet pageAddPet = new PageAddPet();
+                    pageAddPet.SaveAddPet();
+
+                    break;
+
+                case "UserStatus":
+
+                    break;
+
+                case "VisitStatus":
+
+                    break;
+
+                default:
+
+                    break;
+            }
         }
     }
 }
