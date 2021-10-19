@@ -24,12 +24,5 @@ namespace Sudarikov3ISP1113
                 this.Close();
             }
         }
-
-        /*
-            System.Windows.MessageBox.Show(
-        "Выберите один из вариантов",
-        "Сообщение",
-        (MessageBoxButton)MessageBoxButtons.YesNo);
-            */
     }
 }
