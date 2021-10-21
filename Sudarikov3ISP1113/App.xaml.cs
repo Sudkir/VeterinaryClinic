@@ -9,7 +9,5 @@ namespace Sudarikov3ISP1113
     public partial class App : Application
     {
        
-
-
     }
 }

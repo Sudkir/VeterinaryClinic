@@ -92,6 +92,8 @@ namespace Sudarikov3ISP1113.View
                     break;
 
                 case "UserStatus":
+                    PageAddUser pageAddUser = new PageAddUser();
+                    DefFraim.Navigate(pageAddUser);
 
                     break;
 
@@ -120,10 +122,14 @@ namespace Sudarikov3ISP1113.View
                 case "PetStatus":
                     PageAddPet pageAddPet = new PageAddPet();
                     pageAddPet.SaveAddPet();
+                    
 
                     break;
 
                 case "UserStatus":
+                    PageAddUser pageAddUser = new PageAddUser();
+                    pageAddUser.SaveAddUser();
+
 
                     break;
 

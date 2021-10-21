@@ -32,13 +32,14 @@ namespace Sudarikov3ISP1113.View
                 MessageBoxButton.OKCancel, MessageBoxImage.Question);
             if (MessageBoxResult.OK == result)
             {
-                ClassModelPet ModelPet = new ClassModelPet();
-
-                ModelPet.IdUserCard = Convert.ToInt32(idUserTB.Text);
-                ModelPet.NamePet = NameTB.Text;
-                ModelPet.AgeCard = Convert.ToInt32(LongAge.Text);
-                ModelPet.IdTypeCard = cmbFiltrationType.SelectedIndex;
-                ModelPet.IdSex = cmbFiltrationSex.SelectedIndex;
+                ClassModelPet ModelPet = new ClassModelPet
+                {
+                    IdUserCard = Convert.ToInt32(idUserTB.Text),
+                    NamePet = NameTB.Text,
+                    AgeCard = Convert.ToInt32(LongAge.Text),
+                    IdTypeCard = cmbFiltrationType.SelectedIndex,
+                    IdSex = cmbFiltrationSex.SelectedIndex
+                };
                 ModelPet.NewPetAdd();
             }
             else
@@ -48,8 +49,6 @@ namespace Sudarikov3ISP1113.View
             }
         }
 
-        private void C_Click(object sender, RoutedEventArgs e)
-        {
-        }
+      
     }
 }

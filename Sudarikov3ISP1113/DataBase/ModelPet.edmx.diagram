@@ -29,6 +29,7 @@
         <AssociationConnector Association="SudKirPetModel.FK_Ticket_MedicalCard" ManuallyRouted="false" />
         <AssociationConnector Association="SudKirPetModel.FK_Receipt_Ticket" ManuallyRouted="false" />
         <AssociationConnector Association="SudKirPetModel.FK_Ticket_TypeService" ManuallyRouted="false" />
+        <AssociationConnector Association="SudKirPetModel.FK_User_Gender" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

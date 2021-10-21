@@ -26,8 +26,12 @@ namespace Sudarikov3ISP1113.DataBase
         public System.DateTime BDate { get; set; }
         public int TelNum { get; set; }
         public int Age { get; set; }
+        public Nullable<int> IdSex { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MedicalCard> MedicalCard { get; set; }
+        public virtual Gender Gender { get; set; }
     }
 }

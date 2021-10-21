@@ -30,7 +30,7 @@
             <ComboBox x:Name="cmbFiltrationSex" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Canvas.Left="10" Canvas.Top="177" />
             <ComboBox x:Name="cmbFiltrationType" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Canvas.Left="166" Canvas.Top="177" />
         </Canvas>
-        <xctk:SplitButton x:Name="C" Content="Click Me" Click="C_Click" Margin="604,118,51,291">
+        <xctk:SplitButton x:Name="C" Content="Click Me"  Margin="604,118,51,291">
             <xctk:SplitButton.DropDownContent>
                 <xctk:CheckListBox />
             </xctk:SplitButton.DropDownContent>
