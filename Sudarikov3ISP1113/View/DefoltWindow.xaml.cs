@@ -13,15 +13,14 @@ namespace Sudarikov3ISP1113.View
     public partial class DefoltWindow : Window
     {
         private string statusDef;
-        PageAddUser pageAddUser = new PageAddUser();
-        PageAddPet pageAddPet = new PageAddPet();
-        MainWindow mainWindow = new MainWindow();
-        PageAddVisit pageAddVisit = new PageAddVisit();
+        private PageAddUser pageAddUser = new PageAddUser();
+        private PageAddPet pageAddPet = new PageAddPet();
+        private MainWindow mainWindow = new MainWindow();
+        private PageAddVisit pageAddVisit = new PageAddVisit();
 
         public DefoltWindow()
         {
             InitializeComponent();
-            
         }
 
         public DefoltWindow(Page PageName, string status)
@@ -74,7 +73,6 @@ namespace Sudarikov3ISP1113.View
         private void goMain()
         //назад
         {
-            
             mainWindow.Show();
             this.Close();
         }
@@ -92,13 +90,13 @@ namespace Sudarikov3ISP1113.View
             switch (statusDef)
             {
                 case "PetStatus":
-                    
+
                     DefFraim.Navigate(pageAddPet);
 
                     break;
 
                 case "UserStatus":
-                     
+
                     DefFraim.Navigate(pageAddUser);
 
                     break;
@@ -127,16 +125,14 @@ namespace Sudarikov3ISP1113.View
             switch (statusDef)
             {
                 case "PetStatus":
-                    
+
                     pageAddPet.SaveAddPet();
-                    
 
                     break;
 
                 case "UserStatus":
-                    
-                    pageAddUser.SaveAddUser();
 
+                    pageAddUser.SaveAddUser();
 
                     break;
 

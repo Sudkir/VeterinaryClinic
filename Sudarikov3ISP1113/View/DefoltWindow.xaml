@@ -26,8 +26,8 @@
                 <TextBlock Style="{StaticResource MainText}" FontSize="20" TextWrapping="Wrap" Text="Обновить" />
                 <Image Style="{StaticResource MainImg}" Source="/Icon/reload.png" />
             </StackPanel>
-            <StackPanel x:Name="SaveSP" Orientation="Horizontal" Margin="0,10,0,0" MouseLeftButtonUp="Save_MouseLeftButtonUp" >
-                <TextBlock Style="{StaticResource MainText}" FontSize="20" TextWrapping="Wrap" Text="Сохранить"  />
+            <StackPanel x:Name="SaveSP" Orientation="Horizontal" Margin="0,10,0,0" MouseLeftButtonUp="Save_MouseLeftButtonUp">
+                <TextBlock Style="{StaticResource MainText}" FontSize="20" TextWrapping="Wrap" Text="Сохранить" />
                 <Image Style="{StaticResource MainImg}" Source="/Icon/save.png" />
             </StackPanel>
         </StackPanel>

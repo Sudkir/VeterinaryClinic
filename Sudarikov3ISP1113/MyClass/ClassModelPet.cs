@@ -5,8 +5,6 @@ namespace Sudarikov3ISP1113.DataBase
 {
     internal class ClassModelPet : ClassModel
     {
-        
-
         private int _idUserCard = 1;
 
         public int IdUserCard
@@ -70,7 +68,6 @@ namespace Sudarikov3ISP1113.DataBase
             return listPet;
         }
 
-  
         public List<string> TypeList()
         //Вывод списка категорий
         {

@@ -48,7 +48,5 @@ namespace Sudarikov3ISP1113.View
                 //clear поля
             }
         }
-
-      
     }
 }

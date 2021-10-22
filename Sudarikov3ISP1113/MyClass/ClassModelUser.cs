@@ -37,7 +37,6 @@ namespace Sudarikov3ISP1113.DataBase
         }
 
         public int IdSexE { get; set; }
-        
 
         public string SNameE { get; set; }
 
@@ -62,7 +61,6 @@ namespace Sudarikov3ISP1113.DataBase
                 TelNum = TelNumE,
                 Age = AgeE(Date),
                 IdSex = IdSexE
-               
             };
 
             E.User.Add(user);

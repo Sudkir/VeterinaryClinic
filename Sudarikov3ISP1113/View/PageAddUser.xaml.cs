@@ -1,18 +1,7 @@
 ﻿using Sudarikov3ISP1113.DataBase;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Sudarikov3ISP1113.View
 {
@@ -21,8 +10,6 @@ namespace Sudarikov3ISP1113.View
     /// </summary>
     public partial class PageAddUser : Page
     {
-
-
         private ClassModelUser u = new ClassModelUser();
 
         public PageAddUser()
@@ -35,7 +22,6 @@ namespace Sudarikov3ISP1113.View
         {
             cmbFiltrationSex.ItemsSource = u.SexList();
             cmbFiltrationSex.SelectedIndex = 0;
-            
         }
 
         public void SaveAddUser()
@@ -44,9 +30,6 @@ namespace Sudarikov3ISP1113.View
                 MessageBoxButton.OKCancel, MessageBoxImage.Question);
             if (MessageBoxResult.OK == result)
             {
-
-
-
                 u.SNameE = SNameTB.Text;
                 u.LNameE = LNameTB.Text;
                 u.IdSexE = cmbFiltrationSex.SelectedIndex;
@@ -54,10 +37,6 @@ namespace Sudarikov3ISP1113.View
                 u.Date = (DateTime)DatePic.SelectedDate;
                 u.NewUserAdd();
                 ClearAddUser();
-                
-
-
-
             }
             else
             {

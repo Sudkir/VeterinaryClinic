@@ -6,8 +6,6 @@ namespace Sudarikov3ISP1113.DataBase
 {
     internal class ClassModelLogin : ClassModel
     {
-       
-
         private MainWindow mainWindow = new MainWindow();
 
         public void ShowMain()
@@ -21,17 +19,14 @@ namespace Sudarikov3ISP1113.DataBase
             {
                 Employees userModel = E.Employees.FirstOrDefault
                 (i => i.Login == LoginStr && i.Password == PassStr);
-                
 
                 if (userModel == null)
                 {
-                    
                     MessageBox.Show("Пользователь не найден", "Ошибка", MessageBoxButton.OK);
                     return false;
                 }
                 else
                 {
-
                     var idR = userModel.IdRole;
 
                     switch (idR)
@@ -40,7 +35,6 @@ namespace Sudarikov3ISP1113.DataBase
                             MainWindow mainWindow = new MainWindow();
                             mainWindow.Show();
                             return true;
-                     
 
                         default:
                             MessageBox.Show("Пароль не совпадает", "Ошибка", MessageBoxButton.OK);

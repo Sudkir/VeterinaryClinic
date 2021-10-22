@@ -1,23 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Sudarikov3ISP1113.DataBase;
-using System.Windows;
-using System.Windows.Input;
-
-
-
-namespace Sudarikov3ISP1113.DataBase
+﻿namespace Sudarikov3ISP1113.DataBase
 {
     using System.Collections.Generic;
     using System.Linq;
-    class ClassModel
+
+    internal class ClassModel
     {
         public static SudKirPetEntities E { get; } = new SudKirPetEntities();
-         
-        
 
         public List<string> SexList()
         //Вывод списка категорий
@@ -32,6 +20,5 @@ namespace Sudarikov3ISP1113.DataBase
             listFiltr.Insert(0, "Все категории");
             return listFiltr;
         }
-
     }
 }

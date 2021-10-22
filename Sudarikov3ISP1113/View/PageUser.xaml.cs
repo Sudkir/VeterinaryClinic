@@ -8,7 +8,6 @@ namespace Sudarikov3ISP1113.View
     /// </summary>
     public partial class PageUser : Page
     {
-
         private ClassModelUser CMU = new ClassModelUser();
 
         public PageUser()

@@ -1,5 +1,4 @@
-﻿using Sudarikov3ISP1113.DataBase;
-using System.Windows;
+﻿using System.Windows;
 
 namespace Sudarikov3ISP1113
 {
@@ -8,6 +7,5 @@ namespace Sudarikov3ISP1113
     /// </summary>
     public partial class App : Application
     {
-       
     }
 }
