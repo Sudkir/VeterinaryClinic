@@ -20,22 +20,27 @@ namespace Sudarikov3ISP1113.DataBase
             try
             {
                 Employees userModel = E.Employees.FirstOrDefault
-                (i => i.SName == LoginStr && i.LName == PassStr);
-                var idR = userModel.IdRole;
+                (i => i.Login == LoginStr && i.Password == PassStr);
+                
 
                 if (userModel == null)
                 {
+                    
                     MessageBox.Show("Пользователь не найден", "Ошибка", MessageBoxButton.OK);
                     return false;
                 }
                 else
                 {
+
+                    var idR = userModel.IdRole;
+
                     switch (idR)
                     {
                         case 1:
                             MainWindow mainWindow = new MainWindow();
                             mainWindow.Show();
                             return true;
+                     
 
                         default:
                             MessageBox.Show("Пароль не совпадает", "Ошибка", MessageBoxButton.OK);

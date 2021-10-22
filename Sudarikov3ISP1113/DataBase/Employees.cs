@@ -26,6 +26,8 @@ namespace Sudarikov3ISP1113.DataBase
         public string LName { get; set; }
         public int IdRole { get; set; }
         public int IdCabinet { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
     
         public virtual Cabinet Cabinet { get; set; }
         public virtual Role Role { get; set; }

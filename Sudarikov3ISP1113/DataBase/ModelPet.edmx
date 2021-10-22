@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="IdCabinet" />
           </Key>
-          <Property Name="IdCabinet" Type="int" Nullable="false" />
+          <Property Name="IdCabinet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NumCabinet" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Diagnos">
@@ -23,7 +23,7 @@
           <Key>
             <PropertyRef Name="IdDiseaseHistiry" />
           </Key>
-          <Property Name="IdDiseaseHistiry" Type="int" Nullable="false" />
+          <Property Name="IdDiseaseHistiry" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdCard" Type="int" Nullable="false" />
           <Property Name="IdTicket" Type="int" Nullable="false" />
           <Property Name="IdDiagnos" Type="int" Nullable="false" />
@@ -32,25 +32,27 @@
           <Key>
             <PropertyRef Name="IdEmployees" />
           </Key>
-          <Property Name="IdEmployees" Type="int" Nullable="false" />
+          <Property Name="IdEmployees" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IdRole" Type="int" Nullable="false" />
           <Property Name="IdCabinet" Type="int" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
             <PropertyRef Name="IdGender" />
           </Key>
-          <Property Name="IdGender" Type="int" Nullable="false" />
+          <Property Name="IdGender" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameGender" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="MedicalCard">
           <Key>
             <PropertyRef Name="IdCard" />
           </Key>
-          <Property Name="IdCard" Type="int" Nullable="false" />
+          <Property Name="IdCard" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdUser" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Age" Type="int" Nullable="false" />
@@ -61,7 +63,7 @@
           <Key>
             <PropertyRef Name="IdReceipt" />
           </Key>
-          <Property Name="IdReceipt" Type="int" Nullable="false" />
+          <Property Name="IdReceipt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ServiceCost" Type="int" Nullable="false" />
           <Property Name="IdTicket" Type="int" Nullable="false" />
         </EntityType>
@@ -86,7 +88,7 @@
           <Key>
             <PropertyRef Name="IdTicket" />
           </Key>
-          <Property Name="IdTicket" Type="int" Nullable="false" />
+          <Property Name="IdTicket" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TicketDate" Type="datetime" Nullable="false" />
           <Property Name="IdCard" Type="int" Nullable="false" />
           <Property Name="IdDoctor" Type="int" Nullable="false" />
@@ -96,29 +98,27 @@
           <Key>
             <PropertyRef Name="IdType" />
           </Key>
-          <Property Name="IdType" Type="int" Nullable="false" />
+          <Property Name="IdType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameType" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="TypeService">
           <Key>
             <PropertyRef Name="IdTypeService" />
           </Key>
-          <Property Name="IdTypeService" Type="int" Nullable="false" />
+          <Property Name="IdTypeService" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameType" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="IdUser" />
           </Key>
-          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="BDate" Type="date" Nullable="false" />
           <Property Name="TelNum" Type="int" Nullable="false" />
           <Property Name="Age" Type="int" Nullable="false" />
           <Property Name="IdSex" Type="int" />
-          <Property Name="Login" Type="nvarchar" MaxLength="50" />
-          <Property Name="Password" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_DiseaseHistory_Diagnos">
           <End Role="Diagnos" Type="Self.Diagnos" Multiplicity="1" />
@@ -402,6 +402,8 @@
           <NavigationProperty Name="Cabinet" Relationship="Self.FK_Employees_Cabinet" FromRole="Employees" ToRole="Cabinet" />
           <NavigationProperty Name="Role" Relationship="Self.FK_Employees_Role" FromRole="Employees" ToRole="Role" />
           <NavigationProperty Name="Ticket" Relationship="Self.FK_Ticket_Employees" FromRole="Employees" ToRole="Ticket" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -498,8 +500,6 @@
           <NavigationProperty Name="MedicalCard" Relationship="Self.FK_MedicalCard_User" FromRole="User" ToRole="MedicalCard" />
           <Property Name="IdSex" Type="Int32" />
           <NavigationProperty Name="Gender" Relationship="SudKirPetModel.FK_User_Gender" FromRole="User" ToRole="Gender" />
-          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Employees_Cabinet">
           <End Role="Cabinet" Type="Self.Cabinet" Multiplicity="1" />
@@ -784,6 +784,8 @@
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="SudKirPetModel.Employees">
               <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="IdEmployees" ColumnName="IdEmployees" />
                 <ScalarProperty Name="FName" ColumnName="FName" />
                 <ScalarProperty Name="SName" ColumnName="SName" />
@@ -871,8 +873,6 @@
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="SudKirPetModel.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="IdSex" ColumnName="IdSex" />
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
                 <ScalarProperty Name="SName" ColumnName="SName" />

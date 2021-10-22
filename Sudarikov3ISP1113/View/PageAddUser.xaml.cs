@@ -45,25 +45,33 @@ namespace Sudarikov3ISP1113.View
             if (MessageBoxResult.OK == result)
             {
 
-                ClassModelUser classModelUser = new ClassModelUser
-                {
-                    SNameE = NameTB.Text,
-                    LNameE = NameTB.Text,
-                    IdSexE = cmbFiltrationSex.SelectedIndex,
-                    TelNumE = Convert.ToInt32(TelNumTB.Text),
-                    LoginE = LogTB.Text,
-                    PasswordE = PassTB.Text
-                };
 
-                classModelUser.NewUserAdd();
+
+                u.SNameE = SNameTB.Text;
+                u.LNameE = LNameTB.Text;
+                u.IdSexE = cmbFiltrationSex.SelectedIndex;
+                u.TelNumE = Convert.ToInt32(TelNumTB.Text);
+                u.Date = (DateTime)DatePic.SelectedDate;
+                u.NewUserAdd();
+                ClearAddUser();
                 
+
+
+
             }
             else
             {
-                //do stuff if No
-                //clear поля
+                ClearAddUser();
             }
         }
 
+        private void ClearAddUser()
+        {
+            SNameTB.Text = null;
+            LNameTB.Text = null;
+            cmbFiltrationSex.SelectedIndex = 0;
+            TelNumTB.Text = null;
+            DatePic.SelectedDate = null;
+        }
     }
 }

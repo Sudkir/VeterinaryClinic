@@ -10,7 +10,7 @@
 
     <Grid>
         <Canvas HorizontalAlignment="Left" Height="419" Margin="24,10,0,0" VerticalAlignment="Top" Width="766">
-            <xctk:WatermarkTextBox x:Name="NameTB" Height="60" Canvas.Left="18" Canvas.Top="14" Width="268" FontSize="24">
+            <xctk:WatermarkTextBox x:Name="SNameTB" Height="60" Canvas.Left="18" Canvas.Top="14" Width="268" FontSize="24">
                 <xctk:WatermarkTextBox.Watermark>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Icon/Avatar.png" Stretch="Fill" />
@@ -18,7 +18,7 @@
                     </StackPanel>
                 </xctk:WatermarkTextBox.Watermark>
             </xctk:WatermarkTextBox>
-            <xctk:WatermarkTextBox x:Name="idUserTB" Height="60" Canvas.Left="18" Canvas.Top="79" Width="268" FontSize="24">
+            <xctk:WatermarkTextBox x:Name="LNameTB" Height="60" Canvas.Left="18" Canvas.Top="79" Width="268" FontSize="24">
                 <xctk:WatermarkTextBox.Watermark>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Sudarikov3ISP1113;component/Icon/Avatar.png" Stretch="Fill" />
@@ -37,28 +37,8 @@
                 </xctk:WatermarkTextBox.Watermark>
 
             </xctk:WatermarkTextBox>
-
-            <xctk:WatermarkTextBox x:Name="LogTB" Height="60" Canvas.Left="291" Canvas.Top="79" Width="268" FontSize="24">
-                <xctk:WatermarkTextBox.Watermark>
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/Sudarikov3ISP1113;component/Icon/next.png" Stretch="Fill" />
-                        <TextBlock Text="Введите Логин" Margin="4,0,0,0" />
-                    </StackPanel>
-                </xctk:WatermarkTextBox.Watermark>
-
-            </xctk:WatermarkTextBox>
-
-            <xctk:WatermarkTextBox x:Name="PassTB" Height="60" Canvas.Left="291" Canvas.Top="14" Width="268" FontSize="24">
-                <xctk:WatermarkTextBox.Watermark>
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/Sudarikov3ISP1113;component/Icon/next.png" Stretch="Fill" />
-                        <TextBlock Text="Введите Пароль" Margin="4,0,0,0" />
-                    </StackPanel>
-                </xctk:WatermarkTextBox.Watermark>
-
-            </xctk:WatermarkTextBox>
-            <ComboBox x:Name="cmbFiltrationSex" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Canvas.Left="291" Canvas.Top="144" />
-            <DatePicker HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="416" Canvas.Top="144"/>
+            <ComboBox x:Name="cmbFiltrationSex" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Canvas.Left="18" Canvas.Top="209" />
+            <DatePicker x:Name="DatePic" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="143" Canvas.Top="209"/>
         </Canvas>
     </Grid>
 </Page>

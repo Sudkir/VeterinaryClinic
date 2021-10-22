@@ -13,10 +13,15 @@ namespace Sudarikov3ISP1113.View
     public partial class DefoltWindow : Window
     {
         private string statusDef;
+        PageAddUser pageAddUser = new PageAddUser();
+        PageAddPet pageAddPet = new PageAddPet();
+        MainWindow mainWindow = new MainWindow();
+        PageAddVisit pageAddVisit = new PageAddVisit();
 
         public DefoltWindow()
         {
             InitializeComponent();
+            
         }
 
         public DefoltWindow(Page PageName, string status)
@@ -37,6 +42,7 @@ namespace Sudarikov3ISP1113.View
             BI.EndInit();
             NewObjectImage.Stretch = Stretch.Fill;
             NewObjectImage.Source = BI;
+            BI = null;
         }
 
         private void ImageLoad(string status)
@@ -68,7 +74,7 @@ namespace Sudarikov3ISP1113.View
         private void goMain()
         //назад
         {
-            MainWindow mainWindow = new MainWindow();
+            
             mainWindow.Show();
             this.Close();
         }
@@ -86,18 +92,19 @@ namespace Sudarikov3ISP1113.View
             switch (statusDef)
             {
                 case "PetStatus":
-                    PageAddPet pageAddPet = new PageAddPet();
+                    
                     DefFraim.Navigate(pageAddPet);
 
                     break;
 
                 case "UserStatus":
-                    PageAddUser pageAddUser = new PageAddUser();
+                     
                     DefFraim.Navigate(pageAddUser);
 
                     break;
 
                 case "VisitStatus":
+                    DefFraim.Navigate(pageAddVisit);
 
                     break;
 
@@ -120,14 +127,14 @@ namespace Sudarikov3ISP1113.View
             switch (statusDef)
             {
                 case "PetStatus":
-                    PageAddPet pageAddPet = new PageAddPet();
+                    
                     pageAddPet.SaveAddPet();
                     
 
                     break;
 
                 case "UserStatus":
-                    PageAddUser pageAddUser = new PageAddUser();
+                    
                     pageAddUser.SaveAddUser();
 
 

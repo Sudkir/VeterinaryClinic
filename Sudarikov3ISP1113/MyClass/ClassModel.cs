@@ -16,7 +16,8 @@ namespace Sudarikov3ISP1113.DataBase
     class ClassModel
     {
         public static SudKirPetEntities E { get; } = new SudKirPetEntities();
-
+         
+        
 
         public List<string> SexList()
         //Вывод списка категорий

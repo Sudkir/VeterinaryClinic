@@ -37,9 +37,7 @@ namespace Sudarikov3ISP1113.DataBase
         }
 
         public int IdSexE { get; set; }
-        public string LoginE { get; set; }
-
-        public string PasswordE { get; set; }
+        
 
         public string SNameE { get; set; }
 
@@ -63,9 +61,8 @@ namespace Sudarikov3ISP1113.DataBase
                 BDate = Date,
                 TelNum = TelNumE,
                 Age = AgeE(Date),
-                IdSex = IdSexE,
-                Login = LoginE,
-                Password = PasswordE
+                IdSex = IdSexE
+               
             };
 
             E.User.Add(user);

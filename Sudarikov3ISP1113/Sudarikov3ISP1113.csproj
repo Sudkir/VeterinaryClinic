@@ -295,6 +295,9 @@
     <Compile Include="View\PageAddUser.xaml.cs">
       <DependentUpon>PageAddUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PageAddVisit.xaml.cs">
+      <DependentUpon>PageAddVisit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PagePet.xaml.cs">
       <DependentUpon>PagePet.xaml</DependentUpon>
     </Compile>
@@ -389,6 +392,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PageAddUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageAddVisit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

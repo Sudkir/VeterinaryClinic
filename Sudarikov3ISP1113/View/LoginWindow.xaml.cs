@@ -19,6 +19,7 @@ namespace Sudarikov3ISP1113
 
         private void Login_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            Bys.Visibility = Visibility.Visible;
             if (CML.ShowMain(LoginTB.Text, PasswordTB.Text))
             {
                 this.Close();
