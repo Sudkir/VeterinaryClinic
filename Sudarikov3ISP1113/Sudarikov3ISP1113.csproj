@@ -278,11 +278,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="MyClass\ClassModel.cs" />
-    <Compile Include="MyClass\ClassModelLogin.cs" />
-    <Compile Include="MyClass\ClassModelUser.cs" />
-    <Compile Include="MyClass\ClassModelPet.cs" />
-    <Compile Include="MyClass\ClassRole.cs" />
+    <Compile Include="Controller\ClassController.cs" />
+    <Compile Include="Controller\ClassControllerLogin.cs" />
+    <Compile Include="Controller\ClassControllerUser.cs" />
+    <Compile Include="Controller\ClassControllerPet.cs" />
+    <Compile Include="Controller\ClassControllerVisit.cs" />
+    <Compile Include="Controller\ClassRole.cs" />
     <Compile Include="View\DefoltWindow.xaml.cs">
       <DependentUpon>DefoltWindow.xaml</DependentUpon>
     </Compile>

@@ -30,6 +30,7 @@ namespace Sudarikov3ISP1113.View
             DefFraim.Navigate(PageName);
             ImageLoad(statusDef);
             SaveSP.Visibility = Visibility.Collapsed;
+            GoBackSP.Visibility = Visibility.Collapsed;
         }
 
         private void NewObjectImageLoad(string UriS)
@@ -46,6 +47,8 @@ namespace Sudarikov3ISP1113.View
 
         private void ImageLoad(string status)
         {
+            //NavigationUIVisibility="Hidden"
+
             switch (status)
             {
                 case "PetStatus":
@@ -73,6 +76,12 @@ namespace Sudarikov3ISP1113.View
         private void goMain()
         //назад
         {
+
+            while (DefFraim.NavigationService.CanGoBack)
+            {
+                DefFraim.NavigationService.RemoveBackEntry();
+             } 
+
             mainWindow.Show();
             this.Close();
         }
@@ -80,6 +89,8 @@ namespace Sudarikov3ISP1113.View
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             goMain();
+            
+            
         }
 
         private void NewObject_MouseLeftButtonDown_NewObject(object sender, MouseButtonEventArgs e)
@@ -92,17 +103,21 @@ namespace Sudarikov3ISP1113.View
                 case "PetStatus":
 
                     DefFraim.Navigate(pageAddPet);
+                    
+
 
                     break;
 
                 case "UserStatus":
 
                     DefFraim.Navigate(pageAddUser);
+                    
 
                     break;
 
                 case "VisitStatus":
                     DefFraim.Navigate(pageAddVisit);
+                    
 
                     break;
 
@@ -118,6 +133,7 @@ namespace Sudarikov3ISP1113.View
             ResSP.Visibility = Visibility.Hidden;
             SaveSP.Visibility = Visibility.Visible;
             AddObjSP.Visibility = Visibility.Hidden;
+            GoBackSP.Visibility = Visibility.Visible;
         }
 
         private void Save_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -127,6 +143,7 @@ namespace Sudarikov3ISP1113.View
                 case "PetStatus":
 
                     pageAddPet.SaveAddPet();
+                   
 
                     break;
 
@@ -143,6 +160,16 @@ namespace Sudarikov3ISP1113.View
                 default:
 
                     break;
+            }
+        }
+
+       
+
+        private void GoBackSP_MouseLeftButtonDown_GoBack(object sender, MouseButtonEventArgs e)
+        {
+            if (DefFraim.NavigationService.CanGoBack)
+            {
+                DefFraim.NavigationService.GoBack();
             }
         }
     }
