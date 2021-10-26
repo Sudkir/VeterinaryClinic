@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using Sudarikov3ISP1113.DataBase;
+using Sudarikov3ISP1113.MyClass;
+using System.Windows.Controls;
 
 namespace Sudarikov3ISP1113.View
 {
@@ -9,6 +11,8 @@ namespace Sudarikov3ISP1113.View
     {
         public PageAddVisit()
         {
+            ClassControllerVisit classControllerVisit = new ClassControllerVisit();
+
             InitializeComponent();
         }
     }

@@ -9,7 +9,7 @@ namespace Sudarikov3ISP1113
     /// </summary>
     public partial class LoginWindow : Window
     {
-        private readonly ClassModelLogin CML = new ClassModelLogin();
+        private readonly ClassControllerLogin CML = new ClassControllerLogin();
 
         //SudKirPetEntities
         public LoginWindow()

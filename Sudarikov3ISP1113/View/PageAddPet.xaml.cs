@@ -10,7 +10,7 @@ namespace Sudarikov3ISP1113.View
     /// </summary>
     public partial class PageAddPet : Page
     {
-        private ClassModelPet p = new ClassModelPet();
+        private ClassControllerPet p = new ClassControllerPet();
 
         public PageAddPet()
         {
@@ -22,7 +22,8 @@ namespace Sudarikov3ISP1113.View
         {
             cmbFiltrationSex.ItemsSource = p.SexList();
             cmbFiltrationSex.SelectedIndex = 0;
-            cmbFiltrationType.ItemsSource = p.TypeList();
+
+            cmbFiltrationType.ItemsSource = p.CategoryPet();
             cmbFiltrationType.SelectedIndex = 0;
         }
 
@@ -32,7 +33,7 @@ namespace Sudarikov3ISP1113.View
                 MessageBoxButton.OKCancel, MessageBoxImage.Question);
             if (MessageBoxResult.OK == result)
             {
-                ClassModelPet ModelPet = new ClassModelPet
+                ClassControllerPet ModelPet = new ClassControllerPet
                 {
                     IdUserCard = Convert.ToInt32(idUserTB.Text),
                     NamePet = NameTB.Text,

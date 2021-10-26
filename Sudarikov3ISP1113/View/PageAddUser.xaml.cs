@@ -10,7 +10,7 @@ namespace Sudarikov3ISP1113.View
     /// </summary>
     public partial class PageAddUser : Page
     {
-        private ClassModelUser u = new ClassModelUser();
+        private ClassControllerUser u = new ClassControllerUser();
 
         public PageAddUser()
         {

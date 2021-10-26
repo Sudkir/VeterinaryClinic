@@ -17,7 +17,7 @@
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
         <Canvas Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,533,-0.222">
-            <ComboBox x:Name="cmbFiltrationSex" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Canvas.Left="10" Canvas.Top="38" />
+            <ComboBox x:Name="cmbFiltration" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Canvas.Left="10" Canvas.Top="38" />
             <DatePicker x:Name="DatePicVisit" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="10" />
             <Button Content="Button" Canvas.Left="24" Canvas.Top="212" Width="75" />
             <Button Content="Button" Canvas.Left="24" Canvas.Top="263" Width="75" />

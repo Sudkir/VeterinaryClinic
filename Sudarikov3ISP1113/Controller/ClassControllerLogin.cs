@@ -4,7 +4,7 @@ using System.Windows;
 
 namespace Sudarikov3ISP1113.DataBase
 {
-    internal class ClassModelLogin : ClassModel
+    internal class ClassControllerLogin : ClassController
     {
         private MainWindow mainWindow = new MainWindow();
 

@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Sudarikov3ISP1113.DataBase
 {
-    internal class ClassModelPet : ClassModel
+    internal class ClassControllerPet : ClassController
     {
         private int _idUserCard = 1;
 
@@ -59,27 +59,6 @@ namespace Sudarikov3ISP1113.DataBase
             };
             E.MedicalCard.Add(medicalCard);
             E.SaveChanges();
-        }
-
-        public List<MedicalCard> ListPetLoad()
-        //загрузка списка животных
-        {
-            List<MedicalCard> listPet = new List<MedicalCard>(E.MedicalCard.ToList());
-            return listPet;
-        }
-
-        public List<string> TypeList()
-        //Вывод списка категорий
-        {
-            List<string> listType = new List<string>();
-            List<TypePet> category = E.TypePet.ToList();
-            foreach (var i in category)
-            {
-                listType.Add(i.NameType);
-            }
-
-            listType.Insert(0, "Все категории");
-            return listType;
         }
     }
 }

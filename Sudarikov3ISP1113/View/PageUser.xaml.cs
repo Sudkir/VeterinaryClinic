@@ -8,12 +8,13 @@ namespace Sudarikov3ISP1113.View
     /// </summary>
     public partial class PageUser : Page
     {
-        private ClassModelUser CMU = new ClassModelUser();
+        private ClassControllerUser CMU = new ClassControllerUser();
 
         public PageUser()
         {
             InitializeComponent();
-            listViewPet.ItemsSource = CMU.ListUserLoad();
+
+            listViewPet.ItemsSource = CMU.ListUserLoad;
         }
     }
 }

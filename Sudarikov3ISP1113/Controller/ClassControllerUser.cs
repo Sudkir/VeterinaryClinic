@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Sudarikov3ISP1113.DataBase
 {
-    internal class ClassModelUser : ClassModel
+    internal class ClassControllerUser : ClassController
     {
         private int _telNum = 1;
 
@@ -42,13 +42,6 @@ namespace Sudarikov3ISP1113.DataBase
 
         public string LNameE { get; set; }
         public DateTime Date { get; set; } = new DateTime();
-
-        public List<User> ListUserLoad()
-        //загрузка списка животных
-        {
-            List<User> listUser = new List<User>(E.User.ToList());
-            return listUser;
-        }
 
         public void NewUserAdd()
         //добавление нового петомца

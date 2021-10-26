@@ -8,12 +8,12 @@ namespace Sudarikov3ISP1113.View
     /// </summary>
     public partial class PagePet : Page
     {
-        private ClassModelPet CMP = new ClassModelPet();
+        private ClassControllerPet CMP = new ClassControllerPet();
 
         public PagePet()
         {
             InitializeComponent();
-            listViewPet.ItemsSource = CMP.ListPetLoad();
+            listViewPet.ItemsSource = CMP.ListMedicalCardLoad;
         }
     }
 }
