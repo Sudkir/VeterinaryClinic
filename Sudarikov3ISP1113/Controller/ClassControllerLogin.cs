@@ -1,4 +1,5 @@
-﻿using Sudarikov3ISP1113.View;
+﻿using Sudarikov3ISP1113.MyClass;
+using Sudarikov3ISP1113.View;
 using System.Linq;
 using System.Windows;
 
@@ -27,19 +28,12 @@ namespace Sudarikov3ISP1113.DataBase
                 }
                 else
                 {
-                    var idR = userModel.IdRole;
+                    ClassRole.Instance.UserRoleInstance = userModel.IdRole;
+                    ClassRole.Instance.UserIdInstance = userModel.IdEmployees;
 
-                    switch (idR)
-                    {
-                        case 1:
-                            MainWindow mainWindow = new MainWindow();
-                            mainWindow.Show();
-                            return true;
-
-                        default:
-                            MessageBox.Show("Пароль не совпадает", "Ошибка", MessageBoxButton.OK);
-                            return false;
-                    }
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.Show();
+                    return true;
                 }
             }
             catch (System.Data.Entity.Core.EntityException ex)

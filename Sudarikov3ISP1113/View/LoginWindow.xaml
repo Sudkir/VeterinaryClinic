@@ -18,9 +18,6 @@
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
-        <xctk:BusyIndicator x:Name="Bys" Visibility="Hidden" IsBusy="True" Margin="114.889,100,123.444,157.556" Grid.RowSpan="2" Grid.Column="1">
-            <ContentControl />
-        </xctk:BusyIndicator>
         <Image Grid.Row="0" Height="128" Width="128"  Source="/Icon/veterinarian.png" Grid.Column="1"
                VerticalAlignment="Center" Margin="0,58,114,70" HorizontalAlignment="Right" />
 

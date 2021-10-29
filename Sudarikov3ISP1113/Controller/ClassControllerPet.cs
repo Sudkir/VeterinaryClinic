@@ -55,7 +55,7 @@ namespace Sudarikov3ISP1113.DataBase
                 Name = NamePet,
                 Age = AgeCard,
                 IdType = IdTypeCard,
-                Sex = IdSex
+                IdSex = IdSex
             };
             E.MedicalCard.Add(medicalCard);
             E.SaveChanges();

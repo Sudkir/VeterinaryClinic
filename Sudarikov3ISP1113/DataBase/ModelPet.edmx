@@ -57,7 +57,7 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Age" Type="int" Nullable="false" />
           <Property Name="IdType" Type="int" Nullable="false" />
-          <Property Name="Sex" Type="int" Nullable="false" />
+          <Property Name="IdSex" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Receipt">
           <Key>
@@ -71,7 +71,7 @@
           <Key>
             <PropertyRef Name="IdRole" />
           </Key>
-          <Property Name="IdRole" Type="int" Nullable="false" />
+          <Property Name="IdRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameRole" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -176,7 +176,7 @@
               <PropertyRef Name="IdGender" />
             </Principal>
             <Dependent Role="MedicalCard">
-              <PropertyRef Name="Sex" />
+              <PropertyRef Name="IdSex" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -252,7 +252,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_User_Gender">
+        <Association Name="FK_User_Gender1">
           <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
@@ -353,7 +353,7 @@
             <End Role="TypeService" EntitySet="TypeService" />
             <End Role="Ticket" EntitySet="Ticket" />
           </AssociationSet>
-          <AssociationSet Name="FK_User_Gender" Association="Self.FK_User_Gender">
+          <AssociationSet Name="FK_User_Gender1" Association="Self.FK_User_Gender1">
             <End Role="Gender" EntitySet="Gender" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
@@ -362,335 +362,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SudKirPetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Cabinet">
-          <Key>
-            <PropertyRef Name="IdCabinet" />
-          </Key>
-          <Property Name="IdCabinet" Type="Int32" Nullable="false" />
-          <Property Name="NumCabinet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_Cabinet" FromRole="Cabinet" ToRole="Employees" />
-        </EntityType>
-        <EntityType Name="Diagnos">
-          <Key>
-            <PropertyRef Name="IdDiagnos" />
-          </Key>
-          <Property Name="IdDiagnos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameDiagnos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="DiseaseHistory" Relationship="Self.FK_DiseaseHistory_Diagnos" FromRole="Diagnos" ToRole="DiseaseHistory" />
-        </EntityType>
-        <EntityType Name="DiseaseHistory">
-          <Key>
-            <PropertyRef Name="IdDiseaseHistiry" />
-          </Key>
-          <Property Name="IdDiseaseHistiry" Type="Int32" Nullable="false" />
-          <Property Name="IdCard" Type="Int32" Nullable="false" />
-          <Property Name="IdTicket" Type="Int32" Nullable="false" />
-          <Property Name="IdDiagnos" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Diagnos" Relationship="Self.FK_DiseaseHistory_Diagnos" FromRole="DiseaseHistory" ToRole="Diagnos" />
-          <NavigationProperty Name="MedicalCard" Relationship="Self.FK_DiseaseHistory_MedicalCard" FromRole="DiseaseHistory" ToRole="MedicalCard" />
-        </EntityType>
-        <EntityType Name="Employees">
-          <Key>
-            <PropertyRef Name="IdEmployees" />
-          </Key>
-          <Property Name="IdEmployees" Type="Int32" Nullable="false" />
-          <Property Name="FName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="SName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IdRole" Type="Int32" Nullable="false" />
-          <Property Name="IdCabinet" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Cabinet" Relationship="Self.FK_Employees_Cabinet" FromRole="Employees" ToRole="Cabinet" />
-          <NavigationProperty Name="Role" Relationship="Self.FK_Employees_Role" FromRole="Employees" ToRole="Role" />
-          <NavigationProperty Name="Ticket" Relationship="Self.FK_Ticket_Employees" FromRole="Employees" ToRole="Ticket" />
-          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Gender">
-          <Key>
-            <PropertyRef Name="IdGender" />
-          </Key>
-          <Property Name="IdGender" Type="Int32" Nullable="false" />
-          <Property Name="NameGender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="MedicalCard" Relationship="Self.FK_MedicalCard_Gender" FromRole="Gender" ToRole="MedicalCard" />
-          <NavigationProperty Name="User" Relationship="SudKirPetModel.FK_User_Gender" FromRole="Gender" ToRole="User" />
-        </EntityType>
-        <EntityType Name="MedicalCard">
-          <Key>
-            <PropertyRef Name="IdCard" />
-          </Key>
-          <Property Name="IdCard" Type="Int32" Nullable="false" />
-          <Property Name="IdUser" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Age" Type="Int32" Nullable="false" />
-          <Property Name="IdType" Type="Int32" Nullable="false" />
-          <Property Name="Sex" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="DiseaseHistory" Relationship="Self.FK_DiseaseHistory_MedicalCard" FromRole="MedicalCard" ToRole="DiseaseHistory" />
-          <NavigationProperty Name="Gender" Relationship="Self.FK_MedicalCard_Gender" FromRole="MedicalCard" ToRole="Gender" />
-          <NavigationProperty Name="TypePet" Relationship="Self.FK_MedicalCard_TypePet" FromRole="MedicalCard" ToRole="TypePet" />
-          <NavigationProperty Name="User" Relationship="Self.FK_MedicalCard_User" FromRole="MedicalCard" ToRole="User" />
-          <NavigationProperty Name="Ticket" Relationship="Self.FK_Ticket_MedicalCard" FromRole="MedicalCard" ToRole="Ticket" />
-        </EntityType>
-        <EntityType Name="Receipt">
-          <Key>
-            <PropertyRef Name="IdReceipt" />
-          </Key>
-          <Property Name="IdReceipt" Type="Int32" Nullable="false" />
-          <Property Name="ServiceCost" Type="Int32" Nullable="false" />
-          <Property Name="IdTicket" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Ticket" Relationship="Self.FK_Receipt_Ticket" FromRole="Receipt" ToRole="Ticket" />
-        </EntityType>
-        <EntityType Name="Role">
-          <Key>
-            <PropertyRef Name="IdRole" />
-          </Key>
-          <Property Name="IdRole" Type="Int32" Nullable="false" />
-          <Property Name="NameRole" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_Role" FromRole="Role" ToRole="Employees" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="Ticket">
-          <Key>
-            <PropertyRef Name="IdTicket" />
-          </Key>
-          <Property Name="IdTicket" Type="Int32" Nullable="false" />
-          <Property Name="TicketDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="IdCard" Type="Int32" Nullable="false" />
-          <Property Name="IdDoctor" Type="Int32" Nullable="false" />
-          <Property Name="IdTypeService" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK_Ticket_Employees" FromRole="Ticket" ToRole="Employees" />
-          <NavigationProperty Name="MedicalCard" Relationship="Self.FK_Ticket_MedicalCard" FromRole="Ticket" ToRole="MedicalCard" />
-          <NavigationProperty Name="Receipt" Relationship="Self.FK_Receipt_Ticket" FromRole="Ticket" ToRole="Receipt" />
-          <NavigationProperty Name="TypeService" Relationship="Self.FK_Ticket_TypeService" FromRole="Ticket" ToRole="TypeService" />
-        </EntityType>
-        <EntityType Name="TypePet">
-          <Key>
-            <PropertyRef Name="IdType" />
-          </Key>
-          <Property Name="IdType" Type="Int32" Nullable="false" />
-          <Property Name="NameType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="MedicalCard" Relationship="Self.FK_MedicalCard_TypePet" FromRole="TypePet" ToRole="MedicalCard" />
-        </EntityType>
-        <EntityType Name="TypeService">
-          <Key>
-            <PropertyRef Name="IdTypeService" />
-          </Key>
-          <Property Name="IdTypeService" Type="Int32" Nullable="false" />
-          <Property Name="NameType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Ticket" Relationship="Self.FK_Ticket_TypeService" FromRole="TypeService" ToRole="Ticket" />
-        </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="IdUser" />
-          </Key>
-          <Property Name="IdUser" Type="Int32" Nullable="false" />
-          <Property Name="SName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="BDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="TelNum" Type="Int32" Nullable="false" />
-          <Property Name="Age" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="MedicalCard" Relationship="Self.FK_MedicalCard_User" FromRole="User" ToRole="MedicalCard" />
-          <Property Name="IdSex" Type="Int32" />
-          <NavigationProperty Name="Gender" Relationship="SudKirPetModel.FK_User_Gender" FromRole="User" ToRole="Gender" />
-        </EntityType>
-        <Association Name="FK_Employees_Cabinet">
-          <End Role="Cabinet" Type="Self.Cabinet" Multiplicity="1" />
-          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cabinet">
-              <PropertyRef Name="IdCabinet" />
-            </Principal>
-            <Dependent Role="Employees">
-              <PropertyRef Name="IdCabinet" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DiseaseHistory_Diagnos">
-          <End Role="Diagnos" Type="Self.Diagnos" Multiplicity="1" />
-          <End Role="DiseaseHistory" Type="Self.DiseaseHistory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Diagnos">
-              <PropertyRef Name="IdDiagnos" />
-            </Principal>
-            <Dependent Role="DiseaseHistory">
-              <PropertyRef Name="IdDiagnos" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DiseaseHistory_MedicalCard">
-          <End Role="MedicalCard" Type="Self.MedicalCard" Multiplicity="1" />
-          <End Role="DiseaseHistory" Type="Self.DiseaseHistory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MedicalCard">
-              <PropertyRef Name="IdCard" />
-            </Principal>
-            <Dependent Role="DiseaseHistory">
-              <PropertyRef Name="IdCard" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Employees_Role">
-          <End Role="Role" Type="Self.Role" Multiplicity="1" />
-          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="IdRole" />
-            </Principal>
-            <Dependent Role="Employees">
-              <PropertyRef Name="IdRole" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ticket_Employees">
-          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
-          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employees">
-              <PropertyRef Name="IdEmployees" />
-            </Principal>
-            <Dependent Role="Ticket">
-              <PropertyRef Name="IdDoctor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MedicalCard_Gender">
-          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
-          <End Role="MedicalCard" Type="Self.MedicalCard" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Gender">
-              <PropertyRef Name="IdGender" />
-            </Principal>
-            <Dependent Role="MedicalCard">
-              <PropertyRef Name="Sex" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MedicalCard_TypePet">
-          <End Role="TypePet" Type="Self.TypePet" Multiplicity="1" />
-          <End Role="MedicalCard" Type="Self.MedicalCard" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TypePet">
-              <PropertyRef Name="IdType" />
-            </Principal>
-            <Dependent Role="MedicalCard">
-              <PropertyRef Name="IdType" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MedicalCard_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="MedicalCard" Type="Self.MedicalCard" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="IdUser" />
-            </Principal>
-            <Dependent Role="MedicalCard">
-              <PropertyRef Name="IdUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ticket_MedicalCard">
-          <End Role="MedicalCard" Type="Self.MedicalCard" Multiplicity="1" />
-          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MedicalCard">
-              <PropertyRef Name="IdCard" />
-            </Principal>
-            <Dependent Role="Ticket">
-              <PropertyRef Name="IdCard" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Receipt_Ticket">
-          <End Role="Ticket" Type="Self.Ticket" Multiplicity="1" />
-          <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ticket">
-              <PropertyRef Name="IdTicket" />
-            </Principal>
-            <Dependent Role="Receipt">
-              <PropertyRef Name="IdTicket" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ticket_TypeService">
-          <End Role="TypeService" Type="Self.TypeService" Multiplicity="1" />
-          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TypeService">
-              <PropertyRef Name="IdTypeService" />
-            </Principal>
-            <Dependent Role="Ticket">
-              <PropertyRef Name="IdTypeService" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="SudKirPetEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Cabinet" EntityType="Self.Cabinet" />
-          <EntitySet Name="Diagnos" EntityType="Self.Diagnos" />
-          <EntitySet Name="DiseaseHistory" EntityType="Self.DiseaseHistory" />
-          <EntitySet Name="Employees" EntityType="Self.Employees" />
-          <EntitySet Name="Gender" EntityType="Self.Gender" />
-          <EntitySet Name="MedicalCard" EntityType="Self.MedicalCard" />
-          <EntitySet Name="Receipt" EntityType="Self.Receipt" />
-          <EntitySet Name="Role" EntityType="Self.Role" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="Ticket" EntityType="Self.Ticket" />
-          <EntitySet Name="TypePet" EntityType="Self.TypePet" />
-          <EntitySet Name="TypeService" EntityType="Self.TypeService" />
-          <EntitySet Name="User" EntityType="Self.User" />
-          <AssociationSet Name="FK_Employees_Cabinet" Association="Self.FK_Employees_Cabinet">
-            <End Role="Cabinet" EntitySet="Cabinet" />
-            <End Role="Employees" EntitySet="Employees" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DiseaseHistory_Diagnos" Association="Self.FK_DiseaseHistory_Diagnos">
-            <End Role="Diagnos" EntitySet="Diagnos" />
-            <End Role="DiseaseHistory" EntitySet="DiseaseHistory" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DiseaseHistory_MedicalCard" Association="Self.FK_DiseaseHistory_MedicalCard">
-            <End Role="MedicalCard" EntitySet="MedicalCard" />
-            <End Role="DiseaseHistory" EntitySet="DiseaseHistory" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Employees_Role" Association="Self.FK_Employees_Role">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="Employees" EntitySet="Employees" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ticket_Employees" Association="Self.FK_Ticket_Employees">
-            <End Role="Employees" EntitySet="Employees" />
-            <End Role="Ticket" EntitySet="Ticket" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MedicalCard_Gender" Association="Self.FK_MedicalCard_Gender">
-            <End Role="Gender" EntitySet="Gender" />
-            <End Role="MedicalCard" EntitySet="MedicalCard" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MedicalCard_TypePet" Association="Self.FK_MedicalCard_TypePet">
-            <End Role="TypePet" EntitySet="TypePet" />
-            <End Role="MedicalCard" EntitySet="MedicalCard" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MedicalCard_User" Association="Self.FK_MedicalCard_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="MedicalCard" EntitySet="MedicalCard" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ticket_MedicalCard" Association="Self.FK_Ticket_MedicalCard">
-            <End Role="MedicalCard" EntitySet="MedicalCard" />
-            <End Role="Ticket" EntitySet="Ticket" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Receipt_Ticket" Association="Self.FK_Receipt_Ticket">
-            <End Role="Ticket" EntitySet="Ticket" />
-            <End Role="Receipt" EntitySet="Receipt" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ticket_TypeService" Association="Self.FK_Ticket_TypeService">
-            <End Role="TypeService" EntitySet="TypeService" />
-            <End Role="Ticket" EntitySet="Ticket" />
-          </AssociationSet>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -721,9 +393,66 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <AssociationSet Name="FK_User_Gender" Association="SudKirPetModel.FK_User_Gender">
+          <EntitySet Name="Cabinet" EntityType="SudKirPetModel.Cabinet" />
+          <EntitySet Name="Diagnos" EntityType="SudKirPetModel.Diagnos" />
+          <EntitySet Name="DiseaseHistory" EntityType="SudKirPetModel.DiseaseHistory" />
+          <EntitySet Name="Employees" EntityType="SudKirPetModel.Employees" />
+          <EntitySet Name="Gender" EntityType="SudKirPetModel.Gender" />
+          <EntitySet Name="MedicalCard" EntityType="SudKirPetModel.MedicalCard" />
+          <EntitySet Name="Receipt" EntityType="SudKirPetModel.Receipt" />
+          <EntitySet Name="Role" EntityType="SudKirPetModel.Role" />
+          <EntitySet Name="sysdiagrams" EntityType="SudKirPetModel.sysdiagrams" />
+          <EntitySet Name="Ticket" EntityType="SudKirPetModel.Ticket" />
+          <EntitySet Name="TypePet" EntityType="SudKirPetModel.TypePet" />
+          <EntitySet Name="TypeService" EntityType="SudKirPetModel.TypeService" />
+          <EntitySet Name="User" EntityType="SudKirPetModel.User" />
+          <AssociationSet Name="FK_Employees_Cabinet" Association="SudKirPetModel.FK_Employees_Cabinet">
+            <End Role="Cabinet" EntitySet="Cabinet" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiseaseHistory_Diagnos" Association="SudKirPetModel.FK_DiseaseHistory_Diagnos">
+            <End Role="Diagnos" EntitySet="Diagnos" />
+            <End Role="DiseaseHistory" EntitySet="DiseaseHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiseaseHistory_MedicalCard" Association="SudKirPetModel.FK_DiseaseHistory_MedicalCard">
+            <End Role="MedicalCard" EntitySet="MedicalCard" />
+            <End Role="DiseaseHistory" EntitySet="DiseaseHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_Role" Association="SudKirPetModel.FK_Employees_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Employees" Association="SudKirPetModel.FK_Ticket_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalCard_Gender" Association="SudKirPetModel.FK_MedicalCard_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="MedicalCard" EntitySet="MedicalCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Gender1" Association="SudKirPetModel.FK_User_Gender1">
             <End Role="Gender" EntitySet="Gender" />
             <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalCard_TypePet" Association="SudKirPetModel.FK_MedicalCard_TypePet">
+            <End Role="TypePet" EntitySet="TypePet" />
+            <End Role="MedicalCard" EntitySet="MedicalCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalCard_User" Association="SudKirPetModel.FK_MedicalCard_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="MedicalCard" EntitySet="MedicalCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_MedicalCard" Association="SudKirPetModel.FK_Ticket_MedicalCard">
+            <End Role="MedicalCard" EntitySet="MedicalCard" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Receipt_Ticket" Association="SudKirPetModel.FK_Receipt_Ticket">
+            <End Role="Ticket" EntitySet="Ticket" />
+            <End Role="Receipt" EntitySet="Receipt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_TypeService" Association="SudKirPetModel.FK_Ticket_TypeService">
+            <End Role="TypeService" EntitySet="TypeService" />
+            <End Role="Ticket" EntitySet="Ticket" />
           </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -737,7 +466,218 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <Association Name="FK_User_Gender">
+        <EntityType Name="Cabinet">
+          <Key>
+            <PropertyRef Name="IdCabinet" />
+          </Key>
+          <Property Name="IdCabinet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumCabinet" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="SudKirPetModel.FK_Employees_Cabinet" FromRole="Cabinet" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Diagnos">
+          <Key>
+            <PropertyRef Name="IdDiagnos" />
+          </Key>
+          <Property Name="IdDiagnos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameDiagnos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DiseaseHistory" Relationship="SudKirPetModel.FK_DiseaseHistory_Diagnos" FromRole="Diagnos" ToRole="DiseaseHistory" />
+        </EntityType>
+        <EntityType Name="DiseaseHistory">
+          <Key>
+            <PropertyRef Name="IdDiseaseHistiry" />
+          </Key>
+          <Property Name="IdDiseaseHistiry" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCard" Type="Int32" Nullable="false" />
+          <Property Name="IdTicket" Type="Int32" Nullable="false" />
+          <Property Name="IdDiagnos" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Diagnos" Relationship="SudKirPetModel.FK_DiseaseHistory_Diagnos" FromRole="DiseaseHistory" ToRole="Diagnos" />
+          <NavigationProperty Name="MedicalCard" Relationship="SudKirPetModel.FK_DiseaseHistory_MedicalCard" FromRole="DiseaseHistory" ToRole="MedicalCard" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="IdEmployees" />
+          </Key>
+          <Property Name="IdEmployees" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <Property Name="IdCabinet" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cabinet" Relationship="SudKirPetModel.FK_Employees_Cabinet" FromRole="Employees" ToRole="Cabinet" />
+          <NavigationProperty Name="Role" Relationship="SudKirPetModel.FK_Employees_Role" FromRole="Employees" ToRole="Role" />
+          <NavigationProperty Name="Ticket" Relationship="SudKirPetModel.FK_Ticket_Employees" FromRole="Employees" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="IdGender" />
+          </Key>
+          <Property Name="IdGender" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameGender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MedicalCard" Relationship="SudKirPetModel.FK_MedicalCard_Gender" FromRole="Gender" ToRole="MedicalCard" />
+          <NavigationProperty Name="User" Relationship="SudKirPetModel.FK_User_Gender1" FromRole="Gender" ToRole="User" />
+        </EntityType>
+        <EntityType Name="MedicalCard">
+          <Key>
+            <PropertyRef Name="IdCard" />
+          </Key>
+          <Property Name="IdCard" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="IdType" Type="Int32" Nullable="false" />
+          <Property Name="IdSex" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DiseaseHistory" Relationship="SudKirPetModel.FK_DiseaseHistory_MedicalCard" FromRole="MedicalCard" ToRole="DiseaseHistory" />
+          <NavigationProperty Name="Gender" Relationship="SudKirPetModel.FK_MedicalCard_Gender" FromRole="MedicalCard" ToRole="Gender" />
+          <NavigationProperty Name="TypePet" Relationship="SudKirPetModel.FK_MedicalCard_TypePet" FromRole="MedicalCard" ToRole="TypePet" />
+          <NavigationProperty Name="User" Relationship="SudKirPetModel.FK_MedicalCard_User" FromRole="MedicalCard" ToRole="User" />
+          <NavigationProperty Name="Ticket" Relationship="SudKirPetModel.FK_Ticket_MedicalCard" FromRole="MedicalCard" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="Receipt">
+          <Key>
+            <PropertyRef Name="IdReceipt" />
+          </Key>
+          <Property Name="IdReceipt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceCost" Type="Int32" Nullable="false" />
+          <Property Name="IdTicket" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ticket" Relationship="SudKirPetModel.FK_Receipt_Ticket" FromRole="Receipt" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameRole" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="SudKirPetModel.FK_Employees_Role" FromRole="Role" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="IdTicket" />
+          </Key>
+          <Property Name="IdTicket" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TicketDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdCard" Type="Int32" Nullable="false" />
+          <Property Name="IdDoctor" Type="Int32" Nullable="false" />
+          <Property Name="IdTypeService" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="SudKirPetModel.FK_Ticket_Employees" FromRole="Ticket" ToRole="Employees" />
+          <NavigationProperty Name="MedicalCard" Relationship="SudKirPetModel.FK_Ticket_MedicalCard" FromRole="Ticket" ToRole="MedicalCard" />
+          <NavigationProperty Name="Receipt" Relationship="SudKirPetModel.FK_Receipt_Ticket" FromRole="Ticket" ToRole="Receipt" />
+          <NavigationProperty Name="TypeService" Relationship="SudKirPetModel.FK_Ticket_TypeService" FromRole="Ticket" ToRole="TypeService" />
+        </EntityType>
+        <EntityType Name="TypePet">
+          <Key>
+            <PropertyRef Name="IdType" />
+          </Key>
+          <Property Name="IdType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MedicalCard" Relationship="SudKirPetModel.FK_MedicalCard_TypePet" FromRole="TypePet" ToRole="MedicalCard" />
+        </EntityType>
+        <EntityType Name="TypeService">
+          <Key>
+            <PropertyRef Name="IdTypeService" />
+          </Key>
+          <Property Name="IdTypeService" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Ticket" Relationship="SudKirPetModel.FK_Ticket_TypeService" FromRole="TypeService" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TelNum" Type="Int32" Nullable="false" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="IdSex" Type="Int32" />
+          <NavigationProperty Name="Gender" Relationship="SudKirPetModel.FK_User_Gender1" FromRole="User" ToRole="Gender" />
+          <NavigationProperty Name="MedicalCard" Relationship="SudKirPetModel.FK_MedicalCard_User" FromRole="User" ToRole="MedicalCard" />
+        </EntityType>
+        <Association Name="FK_Employees_Cabinet">
+          <End Type="SudKirPetModel.Cabinet" Role="Cabinet" Multiplicity="1" />
+          <End Type="SudKirPetModel.Employees" Role="Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cabinet">
+              <PropertyRef Name="IdCabinet" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="IdCabinet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiseaseHistory_Diagnos">
+          <End Type="SudKirPetModel.Diagnos" Role="Diagnos" Multiplicity="1" />
+          <End Type="SudKirPetModel.DiseaseHistory" Role="DiseaseHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diagnos">
+              <PropertyRef Name="IdDiagnos" />
+            </Principal>
+            <Dependent Role="DiseaseHistory">
+              <PropertyRef Name="IdDiagnos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiseaseHistory_MedicalCard">
+          <End Type="SudKirPetModel.MedicalCard" Role="MedicalCard" Multiplicity="1" />
+          <End Type="SudKirPetModel.DiseaseHistory" Role="DiseaseHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalCard">
+              <PropertyRef Name="IdCard" />
+            </Principal>
+            <Dependent Role="DiseaseHistory">
+              <PropertyRef Name="IdCard" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_Role">
+          <End Type="SudKirPetModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="SudKirPetModel.Employees" Role="Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Employees">
+          <End Type="SudKirPetModel.Employees" Role="Employees" Multiplicity="1" />
+          <End Type="SudKirPetModel.Ticket" Role="Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="IdEmployees" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="IdDoctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalCard_Gender">
+          <End Type="SudKirPetModel.Gender" Role="Gender" Multiplicity="1" />
+          <End Type="SudKirPetModel.MedicalCard" Role="MedicalCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="IdGender" />
+            </Principal>
+            <Dependent Role="MedicalCard">
+              <PropertyRef Name="IdSex" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Gender1">
           <End Type="SudKirPetModel.Gender" Role="Gender" Multiplicity="0..1" />
           <End Type="SudKirPetModel.User" Role="User" Multiplicity="*" />
           <ReferentialConstraint>
@@ -749,140 +689,72 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MedicalCard_TypePet">
+          <End Type="SudKirPetModel.TypePet" Role="TypePet" Multiplicity="1" />
+          <End Type="SudKirPetModel.MedicalCard" Role="MedicalCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypePet">
+              <PropertyRef Name="IdType" />
+            </Principal>
+            <Dependent Role="MedicalCard">
+              <PropertyRef Name="IdType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalCard_User">
+          <End Type="SudKirPetModel.User" Role="User" Multiplicity="1" />
+          <End Type="SudKirPetModel.MedicalCard" Role="MedicalCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="MedicalCard">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_MedicalCard">
+          <End Type="SudKirPetModel.MedicalCard" Role="MedicalCard" Multiplicity="1" />
+          <End Type="SudKirPetModel.Ticket" Role="Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalCard">
+              <PropertyRef Name="IdCard" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="IdCard" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Receipt_Ticket">
+          <End Type="SudKirPetModel.Ticket" Role="Ticket" Multiplicity="1" />
+          <End Type="SudKirPetModel.Receipt" Role="Receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket">
+              <PropertyRef Name="IdTicket" />
+            </Principal>
+            <Dependent Role="Receipt">
+              <PropertyRef Name="IdTicket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_TypeService">
+          <End Type="SudKirPetModel.TypeService" Role="TypeService" Multiplicity="1" />
+          <End Type="SudKirPetModel.Ticket" Role="Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeService">
+              <PropertyRef Name="IdTypeService" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="IdTypeService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище SudKirPetModelContainer" CdmEntityContainer="SudKirPetEntities">
-          <EntitySetMapping Name="Cabinet">
-            <EntityTypeMapping TypeName="SudKirPetModel.Cabinet">
-              <MappingFragment StoreEntitySet="Cabinet">
-                <ScalarProperty Name="IdCabinet" ColumnName="IdCabinet" />
-                <ScalarProperty Name="NumCabinet" ColumnName="NumCabinet" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Diagnos">
-            <EntityTypeMapping TypeName="SudKirPetModel.Diagnos">
-              <MappingFragment StoreEntitySet="Diagnos">
-                <ScalarProperty Name="IdDiagnos" ColumnName="IdDiagnos" />
-                <ScalarProperty Name="NameDiagnos" ColumnName="NameDiagnos" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DiseaseHistory">
-            <EntityTypeMapping TypeName="SudKirPetModel.DiseaseHistory">
-              <MappingFragment StoreEntitySet="DiseaseHistory">
-                <ScalarProperty Name="IdDiseaseHistiry" ColumnName="IdDiseaseHistiry" />
-                <ScalarProperty Name="IdCard" ColumnName="IdCard" />
-                <ScalarProperty Name="IdTicket" ColumnName="IdTicket" />
-                <ScalarProperty Name="IdDiagnos" ColumnName="IdDiagnos" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Employees">
-            <EntityTypeMapping TypeName="SudKirPetModel.Employees">
-              <MappingFragment StoreEntitySet="Employees">
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="IdEmployees" ColumnName="IdEmployees" />
-                <ScalarProperty Name="FName" ColumnName="FName" />
-                <ScalarProperty Name="SName" ColumnName="SName" />
-                <ScalarProperty Name="LName" ColumnName="LName" />
-                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
-                <ScalarProperty Name="IdCabinet" ColumnName="IdCabinet" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Gender">
-            <EntityTypeMapping TypeName="SudKirPetModel.Gender">
-              <MappingFragment StoreEntitySet="Gender">
-                <ScalarProperty Name="IdGender" ColumnName="IdGender" />
-                <ScalarProperty Name="NameGender" ColumnName="NameGender" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MedicalCard">
-            <EntityTypeMapping TypeName="SudKirPetModel.MedicalCard">
-              <MappingFragment StoreEntitySet="MedicalCard">
-                <ScalarProperty Name="IdCard" ColumnName="IdCard" />
-                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
-                <ScalarProperty Name="IdType" ColumnName="IdType" />
-                <ScalarProperty Name="Sex" ColumnName="Sex" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Receipt">
-            <EntityTypeMapping TypeName="SudKirPetModel.Receipt">
-              <MappingFragment StoreEntitySet="Receipt">
-                <ScalarProperty Name="IdReceipt" ColumnName="IdReceipt" />
-                <ScalarProperty Name="ServiceCost" ColumnName="ServiceCost" />
-                <ScalarProperty Name="IdTicket" ColumnName="IdTicket" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Role">
-            <EntityTypeMapping TypeName="SudKirPetModel.Role">
-              <MappingFragment StoreEntitySet="Role">
-                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
-                <ScalarProperty Name="NameRole" ColumnName="NameRole" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="SudKirPetModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Ticket">
-            <EntityTypeMapping TypeName="SudKirPetModel.Ticket">
-              <MappingFragment StoreEntitySet="Ticket">
-                <ScalarProperty Name="IdTicket" ColumnName="IdTicket" />
-                <ScalarProperty Name="TicketDate" ColumnName="TicketDate" />
-                <ScalarProperty Name="IdCard" ColumnName="IdCard" />
-                <ScalarProperty Name="IdDoctor" ColumnName="IdDoctor" />
-                <ScalarProperty Name="IdTypeService" ColumnName="IdTypeService" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TypePet">
-            <EntityTypeMapping TypeName="SudKirPetModel.TypePet">
-              <MappingFragment StoreEntitySet="TypePet">
-                <ScalarProperty Name="IdType" ColumnName="IdType" />
-                <ScalarProperty Name="NameType" ColumnName="NameType" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TypeService">
-            <EntityTypeMapping TypeName="SudKirPetModel.TypeService">
-              <MappingFragment StoreEntitySet="TypeService">
-                <ScalarProperty Name="IdTypeService" ColumnName="IdTypeService" />
-                <ScalarProperty Name="NameType" ColumnName="NameType" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="User">
-            <EntityTypeMapping TypeName="SudKirPetModel.User">
-              <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="IdSex" ColumnName="IdSex" />
-                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-                <ScalarProperty Name="SName" ColumnName="SName" />
-                <ScalarProperty Name="LName" ColumnName="LName" />
-                <ScalarProperty Name="BDate" ColumnName="BDate" />
-                <ScalarProperty Name="TelNum" ColumnName="TelNum" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище SudKirPetModel.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище SudKirPetModel.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище SudKirPetModel.sp_dropdiagram" />
@@ -907,6 +779,134 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище SudKirPetModel.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище SudKirPetModel.sp_upgraddiagrams" />
+          <EntitySetMapping Name="Cabinet">
+            <EntityTypeMapping TypeName="SudKirPetModel.Cabinet">
+              <MappingFragment StoreEntitySet="Cabinet">
+                <ScalarProperty Name="NumCabinet" ColumnName="NumCabinet" />
+                <ScalarProperty Name="IdCabinet" ColumnName="IdCabinet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Diagnos">
+            <EntityTypeMapping TypeName="SudKirPetModel.Diagnos">
+              <MappingFragment StoreEntitySet="Diagnos">
+                <ScalarProperty Name="NameDiagnos" ColumnName="NameDiagnos" />
+                <ScalarProperty Name="IdDiagnos" ColumnName="IdDiagnos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiseaseHistory">
+            <EntityTypeMapping TypeName="SudKirPetModel.DiseaseHistory">
+              <MappingFragment StoreEntitySet="DiseaseHistory">
+                <ScalarProperty Name="IdDiagnos" ColumnName="IdDiagnos" />
+                <ScalarProperty Name="IdTicket" ColumnName="IdTicket" />
+                <ScalarProperty Name="IdCard" ColumnName="IdCard" />
+                <ScalarProperty Name="IdDiseaseHistiry" ColumnName="IdDiseaseHistiry" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="SudKirPetModel.Employees">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="IdCabinet" ColumnName="IdCabinet" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="SName" ColumnName="SName" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="IdEmployees" ColumnName="IdEmployees" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="SudKirPetModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="NameGender" ColumnName="NameGender" />
+                <ScalarProperty Name="IdGender" ColumnName="IdGender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicalCard">
+            <EntityTypeMapping TypeName="SudKirPetModel.MedicalCard">
+              <MappingFragment StoreEntitySet="MedicalCard">
+                <ScalarProperty Name="IdSex" ColumnName="IdSex" />
+                <ScalarProperty Name="IdType" ColumnName="IdType" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdCard" ColumnName="IdCard" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Receipt">
+            <EntityTypeMapping TypeName="SudKirPetModel.Receipt">
+              <MappingFragment StoreEntitySet="Receipt">
+                <ScalarProperty Name="IdTicket" ColumnName="IdTicket" />
+                <ScalarProperty Name="ServiceCost" ColumnName="ServiceCost" />
+                <ScalarProperty Name="IdReceipt" ColumnName="IdReceipt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="SudKirPetModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="NameRole" ColumnName="NameRole" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SudKirPetModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ticket">
+            <EntityTypeMapping TypeName="SudKirPetModel.Ticket">
+              <MappingFragment StoreEntitySet="Ticket">
+                <ScalarProperty Name="IdTypeService" ColumnName="IdTypeService" />
+                <ScalarProperty Name="IdDoctor" ColumnName="IdDoctor" />
+                <ScalarProperty Name="IdCard" ColumnName="IdCard" />
+                <ScalarProperty Name="TicketDate" ColumnName="TicketDate" />
+                <ScalarProperty Name="IdTicket" ColumnName="IdTicket" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypePet">
+            <EntityTypeMapping TypeName="SudKirPetModel.TypePet">
+              <MappingFragment StoreEntitySet="TypePet">
+                <ScalarProperty Name="NameType" ColumnName="NameType" />
+                <ScalarProperty Name="IdType" ColumnName="IdType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeService">
+            <EntityTypeMapping TypeName="SudKirPetModel.TypeService">
+              <MappingFragment StoreEntitySet="TypeService">
+                <ScalarProperty Name="NameType" ColumnName="NameType" />
+                <ScalarProperty Name="IdTypeService" ColumnName="IdTypeService" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="SudKirPetModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="IdSex" ColumnName="IdSex" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="TelNum" ColumnName="TelNum" />
+                <ScalarProperty Name="BDate" ColumnName="BDate" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="SName" ColumnName="SName" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
