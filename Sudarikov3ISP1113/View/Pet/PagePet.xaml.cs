@@ -14,6 +14,10 @@ namespace Sudarikov3ISP1113.View
         {
             InitializeComponent();
             listViewPet.ItemsSource = CMP.ListMedicalCardLoad;
+            
+            
         }
+
+       
     }
 }

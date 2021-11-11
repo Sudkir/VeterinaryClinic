@@ -290,19 +290,22 @@
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\PageAddPet.xaml.cs">
+    <Compile Include="View\Pet\PageAddPet.xaml.cs">
       <DependentUpon>PageAddPet.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\PageAddUser.xaml.cs">
+    <Compile Include="View\User\PageAddUser.xaml.cs">
       <DependentUpon>PageAddUser.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PageAddVisit.xaml.cs">
       <DependentUpon>PageAddVisit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\PagePet.xaml.cs">
+    <Compile Include="View\Pet\PageEditPet.xaml.cs">
+      <DependentUpon>PageEditPet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pet\PagePet.xaml.cs">
       <DependentUpon>PagePet.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\PageUser.xaml.cs">
+    <Compile Include="View\User\PageUser.xaml.cs">
       <DependentUpon>PageUser.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PageVisit.xaml.cs">
@@ -388,11 +391,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\PageAddPet.xaml">
+    <Page Include="View\Pet\PageAddPet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\PageAddUser.xaml">
+    <Page Include="View\User\PageAddUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -400,11 +403,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\PagePet.xaml">
+    <Page Include="View\Pet\PageEditPet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\PageUser.xaml">
+    <Page Include="View\Pet\PagePet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\User\PageUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

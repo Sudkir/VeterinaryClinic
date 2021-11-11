@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Sudarikov3ISP1113.View;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Sudarikov3ISP1113.DataBase
@@ -55,10 +57,38 @@ namespace Sudarikov3ISP1113.DataBase
                 Name = NamePet,
                 Age = AgeCard,
                 IdType = IdTypeCard,
-                IdSex = IdSex
+                Sex = IdSex
             };
             E.MedicalCard.Add(medicalCard);
             E.SaveChanges();
+        }
+
+         
+        public void LoadEditPet(PagePet pagePet, PageEditPet pageEditPet)
+        {
+            int id=0;
+            if (pagePet.listViewPet.SelectedItem is MedicalCard medicalCard)
+            {
+                id = medicalCard.IdCard;
+            }
+
+            MedicalCard medicalcard = E.MedicalCard.FirstOrDefault(i => i.IdCard == id);
+            pageEditPet.NameTB.Text = medicalcard.Name;
+            pageEditPet.LongAge.Value = medicalcard.Age;
+            pageEditPet.cmbFiltrationSex.SelectedIndex = medicalcard.Sex;
+            pageEditPet.cmbFiltrationType.SelectedIndex = medicalcard.IdType;
+            pageEditPet.idUserTB.Text = Convert.ToString( medicalcard.IdUser);
+        }
+
+
+        public void SaveEditPet(int id, PageEditPet pageEditPet)
+        {
+            MedicalCard medicalcard = E.MedicalCard.FirstOrDefault(i => i.IdCard == id);
+            medicalcard.Name = pageEditPet.NameTB.Text;
+            medicalcard.Age = (int)pageEditPet.LongAge.Value;
+            medicalcard.IdType = pageEditPet.cmbFiltrationType.SelectedIndex;
+            medicalcard.Sex = pageEditPet.cmbFiltrationSex.SelectedIndex;
+            medicalcard.IdUser = Convert.ToInt32(pageEditPet.idUserTB.Text);
         }
     }
 }

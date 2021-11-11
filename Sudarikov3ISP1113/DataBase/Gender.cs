@@ -18,7 +18,6 @@ namespace Sudarikov3ISP1113.DataBase
         public Gender()
         {
             this.MedicalCard = new HashSet<MedicalCard>();
-            this.User = new HashSet<User>();
         }
     
         public int IdGender { get; set; }
@@ -26,7 +25,5 @@ namespace Sudarikov3ISP1113.DataBase
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MedicalCard> MedicalCard { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> User { get; set; }
     }
 }

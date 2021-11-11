@@ -15,14 +15,13 @@ namespace Sudarikov3ISP1113.View
         public PageAddPet()
         {
             InitializeComponent();
-            //ListLoad();
+            ListLoad();
         }
 
         private void ListLoad()
         {
             cmbFiltrationSex.ItemsSource = p.SexList();
             cmbFiltrationSex.SelectedIndex = 0;
-
             cmbFiltrationType.ItemsSource = p.CategoryPet();
             cmbFiltrationType.SelectedIndex = 0;
         }

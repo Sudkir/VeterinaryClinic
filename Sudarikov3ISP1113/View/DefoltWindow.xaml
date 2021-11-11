@@ -18,7 +18,11 @@
             <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,-0.333" Grid.Row="3" Grid.Column="0">
-            <StackPanel x:Name="EditSP" Orientation="Horizontal" Margin="0,10,0,0">
+            <StackPanel x:Name="DelSP" Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Style="{StaticResource MainText}" FontSize="20" TextWrapping="Wrap" Text="Удалить" />
+                <Image Style="{StaticResource MainImg}"  Source="/Icon/next.png" />
+            </StackPanel>
+            <StackPanel x:Name="EditSP" Orientation="Horizontal" Margin="0,10,0,0" MouseLeftButtonUp="EditSP_MouseLeftButtonUp">
                 <TextBlock Style="{StaticResource MainText}" FontSize="20" TextWrapping="Wrap" Text="Изменить" />
                 <Image Style="{StaticResource MainImg}" Source="/Icon/edit.png" />
             </StackPanel>

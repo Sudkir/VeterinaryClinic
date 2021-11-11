@@ -5,26 +5,25 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="43167428da124be5af30c1a8db28c966" Name="Diagram1" ZoomLevel="108">
-        <EntityTypeShape EntityType="SudKirPetModel.Cabinet" Width="1.5" PointX="6" PointY="13.25" />
-        <EntityTypeShape EntityType="SudKirPetModel.Diagnos" Width="1.5" PointX="5.25" PointY="3.25" />
-        <EntityTypeShape EntityType="SudKirPetModel.DiseaseHistory" Width="1.5" PointX="7.5" PointY="7" />
-        <EntityTypeShape EntityType="SudKirPetModel.Employees" Width="1.5" PointX="8.25" PointY="11.25" />
-        <EntityTypeShape EntityType="SudKirPetModel.Gender" Width="1.5" PointX="0.75" PointY="5" />
-        <EntityTypeShape EntityType="SudKirPetModel.MedicalCard" Width="1.5" PointX="5.25" PointY="6.5" />
-        <EntityTypeShape EntityType="SudKirPetModel.Receipt" Width="1.5" PointX="12.75" PointY="7.125" />
-        <EntityTypeShape EntityType="SudKirPetModel.Role" Width="1.5" PointX="6" PointY="10.875" />
-        <EntityTypeShape EntityType="SudKirPetModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SudKirPetModel.Ticket" Width="1.5" PointX="10.5" PointY="6.625" />
-        <EntityTypeShape EntityType="SudKirPetModel.TypePet" Width="1.5" PointX="3" PointY="5.25" />
-        <EntityTypeShape EntityType="SudKirPetModel.TypeService" Width="1.5" PointX="8.25" PointY="4.625" />
-        <EntityTypeShape EntityType="SudKirPetModel.User" Width="1.5" PointX="3" PointY="8.375" />
+        <EntityTypeShape EntityType="SudKirPetModel.Cabinet" Width="1.5" PointX="0.75" PointY="11.125" />
+        <EntityTypeShape EntityType="SudKirPetModel.Diagnos" Width="1.5" PointX="6" PointY="1.125" />
+        <EntityTypeShape EntityType="SudKirPetModel.DiseaseHistory" Width="1.5" PointX="8.25" PointY="3.75" />
+        <EntityTypeShape EntityType="SudKirPetModel.Employees" Width="1.5" PointX="3" PointY="11.75" />
+        <EntityTypeShape EntityType="SudKirPetModel.Gender" Width="1.5" PointX="0.75" PointY="4.125" />
+        <EntityTypeShape EntityType="SudKirPetModel.MedicalCard" Width="1.5" PointX="3" PointY="3.375" />
+        <EntityTypeShape EntityType="SudKirPetModel.Receipt" Width="1.5" PointX="7.5" PointY="7" />
+        <EntityTypeShape EntityType="SudKirPetModel.Role" Width="1.5" PointX="0.75" PointY="13.5" />
+        <EntityTypeShape EntityType="SudKirPetModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="7.75" />
+        <EntityTypeShape EntityType="SudKirPetModel.Ticket" Width="1.5" PointX="5.25" PointY="3.5" />
+        <EntityTypeShape EntityType="SudKirPetModel.TypePet" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="SudKirPetModel.TypeService" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="SudKirPetModel.User" Width="1.5" PointX="0.75" PointY="6.875" />
         <AssociationConnector Association="SudKirPetModel.FK_Employees_Cabinet" />
         <AssociationConnector Association="SudKirPetModel.FK_DiseaseHistory_Diagnos" />
         <AssociationConnector Association="SudKirPetModel.FK_DiseaseHistory_MedicalCard" />
         <AssociationConnector Association="SudKirPetModel.FK_Employees_Role" />
         <AssociationConnector Association="SudKirPetModel.FK_Ticket_Employees" />
         <AssociationConnector Association="SudKirPetModel.FK_MedicalCard_Gender" />
-        <AssociationConnector Association="SudKirPetModel.FK_User_Gender1" />
         <AssociationConnector Association="SudKirPetModel.FK_MedicalCard_TypePet" />
         <AssociationConnector Association="SudKirPetModel.FK_MedicalCard_User" />
         <AssociationConnector Association="SudKirPetModel.FK_Ticket_MedicalCard" />

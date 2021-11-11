@@ -53,7 +53,7 @@ namespace Sudarikov3ISP1113.DataBase
                 BDate = Date,
                 TelNum = TelNumE,
                 Age = AgeE(Date),
-                IdSex = IdSexE
+                //IdSex = IdSexE
             };
 
             E.User.Add(user);

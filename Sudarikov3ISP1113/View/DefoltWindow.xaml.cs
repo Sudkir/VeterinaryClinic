@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sudarikov3ISP1113.DataBase;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -18,6 +19,11 @@ namespace Sudarikov3ISP1113.View
         private MainWindow mainWindow = new MainWindow();
         private PageAddVisit pageAddVisit = new PageAddVisit();
 
+        PagePet pagePet = new PagePet();
+        PageUser pageUser = new PageUser();
+        PageVisit pageVisit = new PageVisit();
+        
+
         public DefoltWindow()
         {
             InitializeComponent();
@@ -28,6 +34,29 @@ namespace Sudarikov3ISP1113.View
             statusDef = status;
             InitializeComponent();
             DefFraim.Navigate(PageName);
+            switch (status)
+            {
+                case "PetStatus":
+
+                     
+                    pagePet = (PagePet)PageName;
+
+                    break;
+
+                case "UserStatus":
+                    pageUser = (PageUser)PageName;
+
+                    break;
+                case "VisitStatus":
+                    pageVisit = (PageVisit)PageName;
+
+                    break;
+
+                default:
+
+                    break;
+            }
+                   
             ImageLoad(statusDef);
             SaveSP.Visibility = Visibility.Collapsed;
             GoBackSP.Visibility = Visibility.Collapsed;
@@ -134,6 +163,7 @@ namespace Sudarikov3ISP1113.View
             SaveSP.Visibility = Visibility.Visible;
             AddObjSP.Visibility = Visibility.Hidden;
             GoBackSP.Visibility = Visibility.Visible;
+            DelSP.Visibility = Visibility.Hidden;
         }
 
         private void Save_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -162,8 +192,8 @@ namespace Sudarikov3ISP1113.View
                     break;
             }
         }
+        //HOME-PC\SQLEXPRESS
 
-       
 
         private void GoBackSP_MouseLeftButtonDown_GoBack(object sender, MouseButtonEventArgs e)
         {
@@ -171,6 +201,52 @@ namespace Sudarikov3ISP1113.View
             {
                 DefFraim.NavigationService.GoBack();
             }
+        }
+        
+        
+        
+        private void EditSP_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+           
+            
+            
+
+            switch (statusDef)
+            {
+                case "PetStatus":
+
+                    PageEditPet pageEdit;
+                    if (pagePet.listViewPet.SelectedItem != null)
+                    {
+                        pageEdit = new PageEditPet(pagePet);
+                        DefFraim.Navigate(pageEdit);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Не выбрано животное для редактирования", 
+                            "Ошибка", MessageBoxButton.OK);
+                    }
+
+
+                    break;
+
+                case "UserStatus":
+
+                    
+
+                    break;
+
+                case "VisitStatus":
+
+                    break;
+
+                default:
+
+                    break;
+            }
+
+
+            
         }
     }
 }

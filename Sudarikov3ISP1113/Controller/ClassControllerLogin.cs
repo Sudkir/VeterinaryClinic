@@ -13,7 +13,7 @@ namespace Sudarikov3ISP1113.DataBase
         {
             mainWindow.Show();
         }
-
+        /*
         public bool ShowMain(string LoginStr, string PassStr)
         {
             try
@@ -42,5 +42,9 @@ namespace Sudarikov3ISP1113.DataBase
                 return false;
             }
         }
+    
+         */
     }
 }
+
+       

@@ -26,7 +26,7 @@ namespace Sudarikov3ISP1113.DataBase
         public string Name { get; set; }
         public int Age { get; set; }
         public int IdType { get; set; }
-        public int IdSex { get; set; }
+        public int Sex { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DiseaseHistory> DiseaseHistory { get; set; }

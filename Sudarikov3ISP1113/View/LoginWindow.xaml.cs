@@ -19,10 +19,13 @@ namespace Sudarikov3ISP1113
 
         private void Login_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            /*
+
             if (CML.ShowMain(LoginTB.Text, PasswordTB.Password))
             {
                 this.Close();
             }
+            */
         }
     }
 }
